@@ -1,0 +1,47 @@
+<resources>
+	<string name="app_name">QPboc</string>
+
+	<string name="STR_TERMINATION">交易终止</string>
+	<string name="STR_ACCEPT">交易批准</string>
+	<string name="STR_DECLINE">交易拒绝</string>
+	<string name="STR_ICPOWERUPFAILED">IC卡上电失败\n退出交易</string>
+	<string name="STR_TRYOTHEAR">请尝试其它界面</string>
+	<string name="STR_MORECARD">请出示单一卡片</string>
+	<string name="STR_SHOWCARD">授权金额: %%12.2f 元 \n请出示卡片</string>
+	<string name="STR_DEALING">交易中...</string>
+	<string name="STR_CANNTGOONLINE">无法联机</string>
+	<string name="STR_REMOVECARD">可移开卡片</string>
+	<string name="STR_ONLINEING">联机中...</string>
+	<string name="STR_ONLINE_FAILED">联机失败</string>
+	<string name="STR_APP_LOSE_EFFICACY">卡片过有效期\n交易失败</string>
+	<string name="STR_GOOFFLINE">脱机处理</string>
+	<string name="STR_DEAL_BALANCE_FMT">消费金额: %%12.2f元 \n可用脱机消费金额: %%12.2f元</string>
+	<string name="STR_OFFLINE_BALANCE_FMT">可用脱机消费金额: %%12.2f元</string>
+	<string name="STR_TRANSTYPE_NOT_SUPPORT">交易类型不支持</string>
+
+	<string name="STR_GOONLINE">联机处理</string>
+	<string name="STR_OFFLINEDECLINE">脱机拒绝</string>
+	<string name="STR_ONLINEDECLINE">联机拒绝</string>
+	<string name="STR_ONLINE_ACCEPT">联机批准</string>
+	<string name="STR_ONLINE_DECLINE">联机拒绝</string>
+	<string name="STR_OFFLINE_ACCEPT">脱机批准</string>
+	<string name="STR_SUCESS_OFFLINE">脱机交易成功</string>
+	<string name="STR_SUCESS_ONLINE">联机交易成功</string>
+	<string name="STR_CAPK_Expired">公钥过期</string>
+	<string name="STR_CAPK_WRONG">公钥错</string>
+	<string name="STR_CAPK_NOTFOUND">公钥未找到</string>
+	<string name="STR_ONLINEBATCH">批数据采集</string>
+	<string name="STR_ENDOFBATCH">采集结束</string>
+	<string name="STR_FILEFMT_ERR">文件格式错误</string>
+	<string name="STR_COUNT_FMT">第 %%d 条</string>
+
+	<string name="MSG_ISSUERATH_FAILED">发卡行认证失败</string>
+	<string name="MSG_PINTRYLIMIT_EXC">PIN 尝试次数超过</string>
+	<string name="MSG_SERVICDENOTALLOWED">不允许服务</string>
+
+	<string name="MSG_ASKTOUSEECC">是否使用电子现金进行交易?</string>
+	<string name="MSG_PROCESSING">正在IC卡处理 请勿拔卡</string>
+	<string name="MSG_AMOUNTOUTLIMIT">金额超限\n最大可充值金额: %%.02f"</string>
+	<string name="MSG_FORCEONLINE">是否强制联机</string>
+
+</resources>

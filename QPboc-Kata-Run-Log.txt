@@ -1,0 +1,212 @@
+06-01 16:36:21.665 12822-12822/org.ichanging.qpbocdemo I/System.out: TAG: Tech [android.nfc.tech.IsoDep, android.nfc.tech.NfcA, android.nfc.tech.NfcA, android.nfc.tech.MifareClassic, android.nfc.tech.NdefFormatable]
+06-01 16:36:21.665 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ======= Discovered Tag:TAG: Tech [android.nfc.tech.IsoDep, android.nfc.tech.NfcA, android.nfc.tech.NfcA, android.nfc.tech.MifareClassic, android.nfc.tech.NdefFormatable]==========
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/EMVTag: Tag - [9F02] is Unique,Can't be override!
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QCardholderVerification@2eeb1996 ]
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QPreProcess@3f05e06c
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: ------------------ QPreProcess Start -------------------
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/EMVTag: Tag - [9F02] is Unique,Can't be override!
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_trans_limit = 100000
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_offline_limit = 100000
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_cvm_limit = 100000
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/EMVParam: Terminal Type 22
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess:  9F66 = [ 36800000 ]
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: ------------------ QPreProcess onProcess [ 0 ] -------------------
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QPreProcess@3f05e06c ]
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QSelectPPSE@1f69a635
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/QSelectPPSE: ------------------ QSelectPPSE Start -------------------
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/ICCCommand: ----------------------- EMV/PBOC select aid
+06-01 16:36:21.685 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduSend: [00A404000E325041592E5359532E444446303100]
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduRecv: [6F30840E325041592E5359532E4444463031A51EBF0C1B61194F08A000000333010101500A50424F432044454249548701019000] - sw -[9000]
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [14] - [325041592E5359532E4444463031] - Offset: 16
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 25
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[61] - [25] - [4F08A000000333010101500A50424F43204445424954870101] - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[BF0C] - [27] - [61194F08A000000333010101500A50424F43204445424954870101] - Offset: 30
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [30] - [BF0C1B61194F08A000000333010101500A50424F43204445424954870101] - Offset: 48
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[6F] - [48] - [840E325041592E5359532E4444463031A51EBF0C1B61194F08A000000333010101500A50424F43204445424954870101] - Offset: 50
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[90] - [0] - Offset: 51
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[6F] - [48] - [840E325041592E5359532E4444463031A51EBF0C1B61194F08A000000333010101500A50424F43204445424954870101] - Offset: 50
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [14] - [325041592E5359532E4444463031] - Offset: 16
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [14] - [325041592E5359532E4444463031] - Offset: 16
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [30] - [BF0C1B61194F08A000000333010101500A50424F43204445424954870101] - Offset: 48
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [14] - [325041592E5359532E4444463031] - Offset: 16
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [14] - [325041592E5359532E4444463031] - Offset: 16
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [30] - [BF0C1B61194F08A000000333010101500A50424F43204445424954870101] - Offset: 48
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 25
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[61] - [25] - [4F08A000000333010101500A50424F43204445424954870101] - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[BF0C] - [27] - [61194F08A000000333010101500A50424F43204445424954870101] - Offset: 30
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[BF0C] - [27] - [61194F08A000000333010101500A50424F43204445424954870101] - Offset: 30
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 25
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[61] - [25] - [4F08A000000333010101500A50424F43204445424954870101] - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[61] - [25] - [4F08A000000333010101500A50424F43204445424954870101] - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 25
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[61] - [25] - [4F08A000000333010101500A50424F43204445424954870101] - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[4F] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 22
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 25
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 27
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/QSelectPPSE: 候选AID个数有[1]
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/QSelectPPSE: ------------------ QSelectPPSE onProcess [ 0 ] -------------------
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QSelectPPSE@1f69a635 ]
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QSelectAid@129e1aca
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: ------------------ QSelectAid Start -------------------
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: QSelectAid - AID [A000000333010101]
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/ICCCommand: ----------------------- EMV/PBOC select aid
+06-01 16:36:21.705 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduSend: [00A4040008A00000033301010100]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduRecv: [6F598408A000000333010101A54D500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A9000] - sw -[9000]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 12
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 15
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F38] - [24] - [9F66049F02069F03069F1A0295055F2A029A039C019F3704] - Offset: 42
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[5F2D] - [2] - [7A68] - Offset: 47
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F11] - [1] - [01] - Offset: 51
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F12] - [10] - [50424F43204445424954] - Offset: 64
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F4D] - [2] - [0B0A] - Offset: 5
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[DF4D] - [2] - [0C0A] - Offset: 10
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[BF0C] - [10] - [9F4D020B0ADF4D020C0A] - Offset: 77
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [77] - [500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 89
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[6F] - [89] - [8408A000000333010101A54D500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 91
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[90] - [0] - Offset: 92
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[6F] - [89] - [8408A000000333010101A54D500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 91
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [6F] - [8408A000000333010101A54D500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [84] - [A000000333010101]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [77] - [500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 89
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [A5] - [500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[50] - [10] - [50424F43204445424954] - Offset: 12
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [50] - [50424F43204445424954]
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[87] - [1] - [01] - Offset: 15
+06-01 16:36:21.735 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [87] - [01]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F38] - [24] - [9F66049F02069F03069F1A0295055F2A029A039C019F3704] - Offset: 42
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F38] - [9F66049F02069F03069F1A0295055F2A029A039C019F3704]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[5F2D] - [2] - [7A68] - Offset: 47
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [5F2D] - [7A68]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F11] - [1] - [01] - Offset: 51
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F11] - [01]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F12] - [10] - [50424F43204445424954] - Offset: 64
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F12] - [50424F43204445424954]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[BF0C] - [10] - [9F4D020B0ADF4D020C0A] - Offset: 77
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [BF0C] - [9F4D020B0ADF4D020C0A]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F4D] - [2] - [0B0A] - Offset: 5
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F4D] - [0B0A]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[DF4D] - [2] - [0C0A] - Offset: 10
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo W/EMVBuf: Can't Find Tag:DF4D
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - Buf No Tag [DF4D]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 77
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 89
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[90] - [0] - Offset: 92
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [90] - [null]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 93
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[6F] - [89] - [8408A000000333010101A54D500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 91
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[84] - [8] - [A000000333010101] - Offset: 10
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[A5] - [77] - [500A50424F432044454249548701019F38189F66049F02069F03069F1A0295055F2A029A039C019F37045F2D027A689F1101019F120A50424F43204445424954BF0C0A9F4D020B0ADF4D020C0A] - Offset: 89
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: QSelectAid - SelectAid ret[0]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: loadAidParam - Candidate AID: A000000333010101
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: loadAidParam - Search AID: A000000333010101
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: loadAidParam - AID [{"_aid":"A000000333010101","_app_sel_indicator":1,"_app_ver":"0020","_tac_default":"D84000A800","_tac_denial":"0010000000","_tac_online":"D84004F800","_floorlimit":"00000001","_threshold_value":"00000000","_max_target_percent":99,"_target_percent":99,"_default_ddol":"9F3704","_online_pin_indicator":1,"_ec_trans_limit":"000000100000","_qpboc_offline_limit":"000000100000","_qpboc_trans_limit":"000000100000","_qpboc_cvm_limit":"000000100000","_trans_type_support":""}]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: QSelectAid - LoadAidParam ret[0]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QSelectAid: ------------------ QSelectAid onProcess [ 0 ] -------------------
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QSelectAid@129e1aca ]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QPreProcess@1bb7243b
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: ------------------ QPreProcess Start -------------------
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVTag: Tag - [9F02] is Unique,Can't be override!
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_trans_limit = 100000
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_offline_limit = 100000
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: max_qpboc_cvm_limit = 100000
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVParam: Terminal Type 22
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess:  9F66 = [ 36800000 ]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPreProcess: ------------------ QPreProcess onProcess [ 0 ] -------------------
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QPreProcess@1bb7243b ]
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QAppInit@1aa69758
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/QAppInit: ------------------ QAppInit Start -------------------
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F66] - [4], Offset: 2
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F02] - [6], Offset: 5
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F03] - [6], Offset: 8
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F1A] - [2], Offset: 11
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [95] - [5], Offset: 13
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [5F2A] - [2], Offset: 16
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9A] - [3], Offset: 18
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9C] - [1], Offset: 20
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F37] - [4], Offset: 23
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: It's End, Offset: 23
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F66] - [4], Offset: 2
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F02] - [6], Offset: 5
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F03] - [6], Offset: 8
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F1A] - [2], Offset: 11
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [95] - [5], Offset: 13
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [5F2A] - [2], Offset: 16
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9A] - [3], Offset: 18
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9C] - [1], Offset: 20
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: Find DOL: [9F37] - [4], Offset: 23
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/EMVDol: It's End, Offset: 23
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/ICCCommand: ----------------------- EMV/PBOC get process options
+06-01 16:36:21.745 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduSend: [80A8000023832136800000000000000001000000000000015600000000000156170601002B29EBE400]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/IsoDepAdapter: ApduRecv: [774F82027C009F36020ADC57116299999999999999D201120101234567899F101307010103A00000010A010000038787868FD1FC9F2608AD03EE811AFAD4845F3401009F6C0200009F5D060000000387879000] - sw -[9000]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[82] - [2] - [7C00] - Offset: 4
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F36] - [2] - [0ADC] - Offset: 9
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[57] - [17] - [6299999999999999D20112010123456789] - Offset: 28
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F10] - [19] - [07010103A00000010A010000038787868FD1FC] - Offset: 50
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F26] - [8] - [AD03EE811AFAD484] - Offset: 61
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[5F34] - [1] - [00] - Offset: 65
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F6C] - [2] - [0000] - Offset: 70
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F5D] - [6] - [000000038787] - Offset: 79
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[77] - [79] - [82027C009F36020ADC57116299999999999999D201120101234567899F101307010103A00000010A010000038787868FD1FC9F2608AD03EE811AFAD4845F3401009F6C0200009F5D06000000038787] - Offset: 81
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[90] - [0] - Offset: 82
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QAppInit: QAppInit- GPO Decode Succ
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[77] - [79] - [82027C009F36020ADC57116299999999999999D201120101234567899F101307010103A00000010A010000038787868FD1FC9F2608AD03EE811AFAD4845F3401009F6C0200009F5D06000000038787] - Offset: 81
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[82] - [2] - [7C00] - Offset: 4
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[82] - [2] - [7C00] - Offset: 4
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F36] - [2] - [0ADC] - Offset: 9
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[57] - [17] - [6299999999999999D20112010123456789] - Offset: 28
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F10] - [19] - [07010103A00000010A010000038787868FD1FC] - Offset: 50
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F26] - [8] - [AD03EE811AFAD484] - Offset: 61
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[5F34] - [1] - [00] - Offset: 65
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F6C] - [2] - [0000] - Offset: 70
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F5D] - [6] - [000000038787] - Offset: 79
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 79
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[77] - [79] - [82027C009F36020ADC57116299999999999999D201120101234567899F101307010103A00000010A010000038787868FD1FC9F2608AD03EE811AFAD4845F3401009F6C0200009F5D06000000038787] - Offset: 81
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [77] - [82027C009F36020ADC57116299999999999999D201120101234567899F101307010103A00000010A010000038787868FD1FC9F2608AD03EE811AFAD4845F3401009F6C0200009F5D06000000038787]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[82] - [2] - [7C00] - Offset: 4
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [82] - [7C00]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F36] - [2] - [0ADC] - Offset: 9
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F36] - [0ADC]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[57] - [17] - [6299999999999999D20112010123456789] - Offset: 28
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [57] - [6299999999999999D20112010123456789]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F10] - [19] - [07010103A00000010A010000038787868FD1FC] - Offset: 50
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F10] - [07010103A00000010A010000038787868FD1FC]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F26] - [8] - [AD03EE811AFAD484] - Offset: 61
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F26] - [AD03EE811AFAD484]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[5F34] - [1] - [00] - Offset: 65
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [5F34] - [00]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F6C] - [2] - [0000] - Offset: 70
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F6C] - [0000]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[9F5D] - [6] - [000000038787] - Offset: 79
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [9F5D] - [000000038787]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 79
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: Find TLV:[90] - [0] - Offset: 82
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVBuf: tlv2buf - [90] - [null]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/EMVTlv: It's end - Offset: 83
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QAppInit: QAppInit - tag82:[7C00]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QAppInit: ------------------ AppInit onProcess [ 5 ] -------------------
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 0 ] - Current Process - [ org.ichanging.qpboc.core.QAppInit@1aa69758 ]
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QTerminalActionAnalysis@11b70b1
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QTerminalActionAnalysis: ------------------ QTerminalActionAnalysis Start -------------------
+06-01 16:36:21.795 12822-12822/org.ichanging.qpbocdemo I/QTerminalActionAnalysis: ------------------ QTerminalActionAnalysis onProcess [ 7 ] -------------------
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo I/QPboc: onNextProcess - ProcessResult[ 7 ] - Current Process - [ org.ichanging.qpboc.core.QTerminalActionAnalysis@11b70b1 ]
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo W/ProcessSwitch: Next Process is - org.ichanging.qpboc.core.QCardholderVerification@2eeb1996
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo I/EMVParam: Terminal Type 22
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo I/QCardholderVerification: ------------------ QCardholderVerification onProcess Start -------------------
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo I/QPboc: Field55 - [ 9F2608AD03EE811AFAD4849F2701809F101307010103A00000010A010000038787868FD1FC9F37042B29EBE49F36020ADC950500000000009A031706019C01009F02060000000000015F2A02015682027C009F1A0201569F03060000000000009F3303E0E9C89F34030000009F3501229F1E0846464646464646468408A0000003330101019F090200009F410400000005 ]
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo I/QCardholderVerification: ------------------ QCardholderVerification onProcess End -------------------
+06-01 16:36:21.825 12822-12822/org.ichanging.qpbocdemo D/PersonaManager: isNFCAllowed

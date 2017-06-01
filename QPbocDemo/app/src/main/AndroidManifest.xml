@@ -1,0 +1,36 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.ichanging.qpbocdemo">
+
+    <!--
+    最小SDK 版本需要设置正确，API level 9 只包含有限的tag 支持,包括：
+        通过ACTION_TAG_DISCOVERED 来发布Tag 信息
+        只有通过EXTRA_NDEF_MESSAGES 扩展来访问NDEF 消息
+        其他的tag 属性和I/O 操作都不支持
+    要用API level 10 来实现对tag 的广泛的读写支持。
+-->
+    <uses-sdk android:minSdkVersion="10" />
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
