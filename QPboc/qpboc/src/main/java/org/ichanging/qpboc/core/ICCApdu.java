@@ -63,7 +63,7 @@ public class ICCApdu
     public byte[] build()
     {
         int len = 0;
-        byte[] cmd = null;
+        byte[] cmd;
 
         if(_mask == 0x4F)
         {

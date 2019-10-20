@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class QTerminalActionAnalysis  extends QCore implements ProcessAble{
 
     private static final String TAG = "QTerminalActionAnalysis";
-    private ArrayList<EMVCapk> mCapkList = null;
+    private ArrayList<EMVCapk> mCapkList;
 
     public QTerminalActionAnalysis(QOption option) {
         super(option);
@@ -21,8 +21,8 @@ public class QTerminalActionAnalysis  extends QCore implements ProcessAble{
 
     public int process() {
 
-        byte[] tag9F10 = null, tag57 = null;
-        byte[] pan = null, sn = null;
+        byte[] tag9F10, tag57;
+        byte[] pan, sn;
 
         LogUtil.i(TAG, "------------------ QTerminalActionAnalysis Start -------------------");
 

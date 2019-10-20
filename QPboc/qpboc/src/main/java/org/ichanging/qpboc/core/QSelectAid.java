@@ -105,10 +105,10 @@ public class QSelectAid extends QCore implements ProcessAble {
 
     private int SelectAid(EMVCandidate candidate)
     {
-        int iRet = QCORE_SUCESS;
+        int iRet;
         ICCResponse rsp = new ICCResponse();
-        EMVTlv tlv = null,subtlv = null;
-        TLVTag tlvTag = null;
+        EMVTlv tlv,subtlv = null;
+        TLVTag tlvTag;
         byte[] btag = null;
 
         mBuf.setTagValue("4F",candidate._aid);
@@ -168,7 +168,7 @@ public class QSelectAid extends QCore implements ProcessAble {
 
     public int process() {
 
-        int iRet = QCORE_SUCESS;
+        int iRet;
 
         LogUtil.i(TAG, "------------------ QSelectAid Start -------------------");
 

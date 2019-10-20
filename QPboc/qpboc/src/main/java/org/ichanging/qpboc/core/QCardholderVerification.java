@@ -19,7 +19,7 @@ public class QCardholderVerification extends QCore implements ProcessAble {
 
     public int process() {
         int iRet = QCORE_SUCESS;
-        byte[] tag9F6C = null,tag9F66 = null;
+        byte[] tag9F6C,tag9F66;
         byte[] pin = new byte[40];
         byte[] tag_9f34 = { 0x00 , 0x00, 0x00 };
 

@@ -52,13 +52,13 @@ public class QReadAppData extends QCore implements ProcessAble{
 
     public int process()
     {
-        int iRet = QCORE_SUCESS;
-        byte[] tag94 = null;
+        int iRet;
+        byte[] tag94;
         byte[] uAuthData = new byte[1024];
-        int iSfi = 0, iFrec = 0, iLrec = 0, iNrec = 0;
+        int iSfi, iFrec, iLrec, iNrec;
         int i = 0,iAuthLen = 0,iErrSDAdata = 0;
 
-        TLVTag tag = null;
+        TLVTag tag;
 
         ICCResponse rsp = new ICCResponse();
         EMVTlv tlv = new EMVTlv(null);

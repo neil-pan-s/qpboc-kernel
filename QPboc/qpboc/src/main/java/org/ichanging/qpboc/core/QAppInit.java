@@ -33,10 +33,10 @@ public class QAppInit extends QCore implements ProcessAble{
 
     public int process() {
 
-        int iRet = QCORE_SUCESS,iLen = 0;
-        byte[] dolfmt = null,dolbuf = null,buf = null;
+        int iRet,iLen;
+        byte[] dolfmt,dolbuf,buf;
 
-        int iSfi = 0, iFrec = 0, iLrec = 0, iNrec = 0;
+        int iSfi, iFrec, iLrec, iNrec;
 
         byte[] byte01 = { 0x01 };
         byte[] byte00 = { 0x00 };

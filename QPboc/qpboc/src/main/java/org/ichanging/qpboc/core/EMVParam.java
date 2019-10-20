@@ -122,7 +122,7 @@ public class EMVParam {
     public static final int TRANS_Support_Load                = (0x0001);
 
     public static int trans_opt_get(int nr , int[] _support) {
-        return ((_support)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_support)[nr >> 8] & (nr & 0x00FF));
     }
 
 
@@ -152,15 +152,15 @@ public class EMVParam {
     public static final int CAPA_Support_English              = (0x0102);
 
     public static int capa_opt_get(int nr, byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] & (nr & 0x00FF));
     }
 
     public static int capa_opt_set(int nr, byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int capa_opt_unset(int nr,byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] &= ~(((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] &= ~(nr & 0x00FF));
     }
 
     /*
@@ -315,15 +315,15 @@ public class EMVParam {
 
 
     public static int  ics_opt_get(int nr, byte[] _ics) {
-        return ((_ics)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] & (nr & 0x00FF));
     }
 
     public static int  ics_opt_set(int nr,byte[] _ics) {
-        return ((_ics)[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int  ics_opt_unset(int nr,byte[] _ics){
-        return ((_ics)[((int) (nr)) >> 8] &= ~(((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] &= ~(nr & 0x00FF));
     }
 
 
@@ -679,11 +679,11 @@ public class EMVParam {
     public static final int SCRIPT_PROCESSING_FAILED_AFTER_2GENAC       = 0x0410;
 
     public static int tvr_set(int nr , byte[] _tvr) {
-        return (_tvr[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return (_tvr[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int tvr_get(int nr, byte[] _tvr) {
-        return (_tvr[((int)(nr)) >> 8] & (((int)(nr)) & 0x00FF));
+        return (_tvr[nr >> 8] & (nr & 0x00FF));
     }
 
 
@@ -707,11 +707,11 @@ public class EMVParam {
     public static final int SCRIPT_PROCESSING_PERFORMED                = 0x0004;
 
     public static int tsi_set(int nr , byte[] _tsi) {
-        return _tsi[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF);
+        return _tsi[nr >> 8] |= (nr & 0x00FF);
     }
 
     public static int tsi_get(int nr , byte[] _tsi) {
-        return (_tsi[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return (_tsi[nr >> 8] & (nr & 0x00FF));
     }
 
     public ArrayList<EMVAid> mAidList = new ArrayList<>();
@@ -844,8 +844,8 @@ public class EMVParam {
 
     public void loadAids()
     {
-        int limit = 0,translimit = 0,cvmlimit = 0;
-        EMVAid aid = null;
+        int limit,translimit = 0,cvmlimit = 0;
+        EMVAid aid;
 
         mAidList.clear();
         max_qpboc_offline_limit = 0;

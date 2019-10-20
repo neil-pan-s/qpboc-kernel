@@ -256,7 +256,7 @@ public class EMVBuf {
 
     public void setTagValue(String tag,byte value)
     {
-        byte[] bytes = { (byte) value};
+        byte[] bytes = {value};
 
         setTagValue(tag,bytes);
     }
@@ -272,7 +272,7 @@ public class EMVBuf {
 
     public void setTagValue(int tag,byte value)
     {
-        byte[] bytes = { (byte) value};
+        byte[] bytes = {value};
 
         setTagValue(tag,bytes);
     }
@@ -289,7 +289,7 @@ public class EMVBuf {
 
     public void setTransAmount(int iCash , int iCashBack)
     {
-        byte[] buf = null;
+        byte[] buf;
 
         // 9f04 Cash back amount binary
         buf = HexUtil.UnsignedIntToByte4 (iCashBack);
@@ -344,8 +344,8 @@ public class EMVBuf {
 
     public boolean tlv2buf(EMVTlv tlv)
     {
-        TLVTag tlvTag = null;
-        byte[] btag = null;
+        TLVTag tlvTag;
+        byte[] btag;
 
         while (tlv.hasNext())
         {

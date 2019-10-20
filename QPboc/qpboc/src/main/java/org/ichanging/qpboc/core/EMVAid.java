@@ -65,7 +65,7 @@ public class EMVAid
 
         EMVAid aid = new EMVAid();
         EMVTlv tlv = new EMVTlv(field62);
-        TLVTag tag = null;
+        TLVTag tag;
 
         if(!tlv.validTlv())
         {
@@ -293,7 +293,7 @@ public class EMVAid
             json.put("_max_target_percent",_max_target_percent);
             json.put("_target_percent",_target_percent);
             json.put("_default_ddol",HexUtil.ByteArrayToHexString(_default_ddol));
-            json.put("_online_pin_indicator",(int)_online_pin_indicator);
+            json.put("_online_pin_indicator", _online_pin_indicator);
             json.put("_ec_trans_limit",HexUtil.ByteArrayToHexString(_ec_trans_limit));
             json.put("_qpboc_offline_limit",HexUtil.ByteArrayToHexString(_qpboc_offline_limit));
             json.put("_qpboc_trans_limit",HexUtil.ByteArrayToHexString(_qpboc_trans_limit));

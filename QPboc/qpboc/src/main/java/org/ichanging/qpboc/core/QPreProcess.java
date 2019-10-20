@@ -17,7 +17,7 @@ public class QPreProcess extends QCore implements ProcessAble{
 
     public int process()
     {
-        boolean bNeedOnlineKey = false; //Do you need to apply ciphertext online?
+        boolean bNeedOnlineKey; //Do you need to apply ciphertext online?
         byte[] u9F66 = new byte[4];     //Assume that the terminal does not support MSD or non-connected PBOC.
 
         LogUtil.i(TAG, "------------------ QPreProcess Start -------------------");

@@ -23,7 +23,7 @@ public class QfDDAProcess extends QCore implements ProcessAble {
     @Override
     public void onProcess()
     {
-        byte[] tag9F6C = null;
+        byte[] tag9F6C;
 
         int iRet = process();
         LogUtil.i(TAG, "------------------ QfDDAProcess onProcess [ " + iRet + " ] -------------------");

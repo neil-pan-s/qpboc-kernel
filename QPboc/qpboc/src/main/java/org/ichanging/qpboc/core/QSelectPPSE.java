@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class QSelectPPSE extends QCore implements ProcessAble {
 
     private static final String TAG = "QSelectPPSE";
-    private ArrayList<EMVCandidate> mCandidateList = null;
+    private ArrayList<EMVCandidate> mCandidateList;
 
     public QSelectPPSE(QOption option) {
         super(option);
@@ -21,9 +21,9 @@ public class QSelectPPSE extends QCore implements ProcessAble {
 
     public int process() {
 
-        int iRet = QCORE_SUCESS;
-        EMVTlv tlv = null , tlv_61 = null;
-        TLVTag tag = null , tag_61 = null;
+        int iRet;
+        EMVTlv tlv, tlv_61;
+        TLVTag tag, tag_61 = null;
 
         LogUtil.i(TAG, "------------------ QSelectPPSE Start -------------------");
 

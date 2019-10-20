@@ -14,18 +14,18 @@ public class QPboc extends ProcessSwitch{
 
     private static final String TAG = "QPboc";
 
-    private ICCCommand    mICC = null;
-    private EMVParam      mParam = null;
-    private EMVBuf        mBuf = null;
+    private ICCCommand    mICC;
+    private EMVParam      mParam;
+    private EMVBuf        mBuf;
 
-    private QOption       mOption = null;
+    private QOption       mOption;
     private ProcessAble   mProcess = null;
 
-    private ArrayList<ProcessAble> mQProcessTable = null;
-    private ArrayList<ProcessAble> mQProcessOnlineTable = null;
-    private ArrayList<ProcessAble> mQProcessOfflineTable = null;
+    private ArrayList<ProcessAble> mQProcessTable;
+    private ArrayList<ProcessAble> mQProcessOnlineTable;
+    private ArrayList<ProcessAble> mQProcessOfflineTable;
 
-    private ArrayList<ProcessAble> mECashQueryProcessTable = null;
+    private ArrayList<ProcessAble> mECashQueryProcessTable;
 
     public QPboc(ICCInterface icc, CoreInterface adapter)
     {
@@ -213,9 +213,9 @@ public class QPboc extends ProcessSwitch{
                         0x9F09, 0x9F41
                 };
 
-        EMVTag tag = null;
-        byte[] tmp = null , field = new byte[1024];
-        int len = 0,fieldLen = 0;
+        EMVTag tag;
+        byte[] tmp, field = new byte[1024];
+        int len,fieldLen = 0;
 
         int iTraceNumber = this.mOption.getCoreInterface()._inc_tsc();
         mBuf.setTagValue("9F41",HexUtil.UnsignedIntToByte4(iTraceNumber));

@@ -13,7 +13,7 @@ public class EMVDol {
 
     private static final String TAG = "EMVDol";
 
-    private EMVBuf mEmvBuf = null;
+    private EMVBuf mEmvBuf;
     private byte[] mDol = null;
 
     private HashMap<String,Integer> mDolMap = new HashMap<>();
@@ -40,8 +40,8 @@ public class EMVDol {
      */
     public void praseDol()
     {
-        String  tag = "";
-        int     iLen = 0 , iOffset = 0;
+        String  tag;
+        int     iLen, iOffset;
 
         for (iOffset = 0;iOffset < mDol.length;)
         {
@@ -86,8 +86,8 @@ public class EMVDol {
 
     public static boolean validDol(byte[] dol)
     {
-        String  tag = "";
-        int     iLen = 0 , iOffset = 0;
+        String  tag;
+        int     iLen, iOffset;
 
         for (iOffset = 0;iOffset < dol.length;)
         {
@@ -152,10 +152,10 @@ public class EMVDol {
 
     public byte[] sealDol(byte[] dol)
     {
-        String tag = "";
-        int iLen = 0,iValueLen = 0;
-        byte[] dolValue = null,tmp = null;
-        EMVTag eTag = null;
+        String tag;
+        int iLen,iValueLen = 0;
+        byte[] dolValue,tmp;
+        EMVTag eTag;
 
         if(!validDol())
         {

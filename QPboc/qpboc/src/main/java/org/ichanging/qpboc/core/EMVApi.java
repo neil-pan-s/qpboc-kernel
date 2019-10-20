@@ -99,9 +99,9 @@ public class EMVApi {
                         0x9F09, 0x9F41
                 };
 
-        EMVTag tag = null;
-        byte[] tmp = null , field = new byte[1024];
-        int len = 0,fieldLen = 0;
+        EMVTag tag;
+        byte[] tmp, field = new byte[1024];
+        int len,fieldLen = 0;
 
         int iTraceNumber = mAdapter._inc_tsc();
         mBuf.setTagValue("9F41",HexUtil.UnsignedIntToByte4(iTraceNumber));

@@ -97,19 +97,19 @@ public class EMVTag {
         VARIABLE
     }
 
-    private byte[] tagID = null;
+    private byte[] tagID;
 
     private byte[] tagStringID = null;
 
     private byte[] tagValue = null;
 
-    private String tagName = "";
+    private String tagName;
 
-    private String tagDescribe = "";
+    private String tagDescribe;
 
-    private TagFrom tagFrom = TagFrom.FROM_IC;
+    private TagFrom tagFrom;
 
-    private TagFormat tagFormat = TagFormat.BINARY;
+    private TagFormat tagFormat;
 
     // Number Format Tag List
     public static final String[] Tag_Format_N =
@@ -219,10 +219,10 @@ public class EMVTag {
 
     public  static String getTagDescribe_CN(String tagName)
     {
-        String str = null;
+        String str;
 
         byte[] tag = HexUtil.HexStringToByteArray(tagName);
-        int utag = ((int)(tag[0] & 0xFF) << 8) | (tag[1] & 0xFF);
+        int utag = ((tag[0] & 0xFF) << 8) | (tag[1] & 0xFF);
 
         switch (utag)
         {
@@ -437,7 +437,7 @@ public class EMVTag {
     @NonNull
     public String toString() {
 
-        String strClass = "",strValue = "";
+        String strClass,strValue;
 
         switch (getTagClass())
         {

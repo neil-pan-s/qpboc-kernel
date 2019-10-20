@@ -20,9 +20,9 @@ import java.util.Random;
  */
 public class CoreAdapter implements CoreInterface {
 
-    private Context mContext    = null;
-    private Toast   mToast      = null;
-    private Random  mRandom     = null;
+    private Context mContext;
+    private Toast   mToast;
+    private Random  mRandom;
     private int     mTraceNumber = 0;
 
     public CoreAdapter(Context context)
@@ -62,26 +62,11 @@ public class CoreAdapter implements CoreInterface {
                 .setMessage(msg)
                 .setCancelable(false);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                _callback.onSuccess(true);
-            }
-        });
+        builder.setPositiveButton("Yes", (dialogInterface, i) -> _callback.onSuccess(true));
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                _callback.onSuccess(false);
-            }
-        });
+        builder.setNegativeButton("No", (dialogInterface, i) -> _callback.onSuccess(false));
 
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialogInterface) {
-                _callback.onCancel();
-            }
-        });
+        builder.setOnCancelListener(dialogInterface -> _callback.onCancel());
 
         builder.create().show();
     }
