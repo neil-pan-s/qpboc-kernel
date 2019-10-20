@@ -714,9 +714,9 @@ public class EMVParam {
         return (_tsi[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
     }
 
-    public ArrayList<EMVAid> mAidList = new ArrayList<EMVAid>();
-    public ArrayList<EMVCapk> mCapkList = new ArrayList<EMVCapk>();
-    public ArrayList<EMVCandidate> mCandidateList = new ArrayList<EMVCandidate>();
+    public ArrayList<EMVAid> mAidList = new ArrayList<>();
+    public ArrayList<EMVCapk> mCapkList = new ArrayList<>();
+    public ArrayList<EMVCandidate> mCandidateList = new ArrayList<>();
     public String mDataPath = null;     //文件读写路径
 
     private static EMVParam mEmvParam = null;

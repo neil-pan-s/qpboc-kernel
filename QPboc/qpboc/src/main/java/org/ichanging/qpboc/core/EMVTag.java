@@ -22,7 +22,7 @@ public class EMVTag {
      * = 0 简单数据元结构
      * = 1 结构(复合)数据元结构
      */
-    public static enum TagType {
+    public enum TagType {
 
         /**
          * The value field of a primitive data object contains a
@@ -42,7 +42,7 @@ public class EMVTag {
      * 根据2个位的组合,有四种类别:通用类别,应用类别,上下文语境类别,专用类别 主要用于在于终端设备交互的时候 确定数据处理的类型
      *
      */
-    public static enum TagClass{
+    public enum TagClass{
         UNIVERSAL, APPLICATION, CONTEXT_SPECIFIC, PRIVATE
     }
 
@@ -50,7 +50,7 @@ public class EMVTag {
      * Tag From IC or Terminal
      *
      */
-    public static enum TagFrom {
+    public enum TagFrom {
         FROM_IC,
         FROM_TERMINAL
     }
@@ -59,7 +59,7 @@ public class EMVTag {
      * Tag Value Format
      *
      */
-    public static enum TagFormat {
+    public enum TagFormat {
 
         /**
          * Only alphabetic (a to z and A to Z)
@@ -94,7 +94,7 @@ public class EMVTag {
         /**
          * Variable
          */
-        VARIABLE;
+        VARIABLE
     }
 
     private byte[] tagID = null;

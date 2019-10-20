@@ -16,7 +16,7 @@ public class EMVBuf {
 
     private static final String TAG = "EMVBuf";
 
-    private static HashMap<String,EMVTag> mTlvMap = new HashMap<String , EMVTag>();
+    private static HashMap<String,EMVTag> mTlvMap = new HashMap<>();
 
     /**
      *

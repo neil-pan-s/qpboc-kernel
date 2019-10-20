@@ -18,15 +18,15 @@ public class QAppInit extends QCore implements ProcessAble{
         //检查GPO返回的必备标签
         String[] tagTable = {"82", "9F36", "57", "9F26", "9F10"};
 
-        for (int i = 0; i < tagTable.length; i++) {
-            if (mBuf.findTag(tagTable[i]) == null) {
-                if (mParam.capa_options(EMVParam.CAPA_Support_Contact_Pboc)) {
-                    mAdapter._ShowMessage(mAdapter._I18NString("STR_TERMINATION"), 500);
-                    return QCORE_TRYOTHEAR;
-                }
-                return QCORE_TERMINATION;
-            }
-        }
+		for (String s : tagTable) {
+			if (mBuf.findTag(s) == null) {
+				if (mParam.capa_options(EMVParam.CAPA_Support_Contact_Pboc)) {
+					mAdapter._ShowMessage(mAdapter._I18NString("STR_TERMINATION"), 500);
+					return QCORE_TRYOTHEAR;
+				}
+				return QCORE_TERMINATION;
+			}
+		}
 
         return QCORE_SUCESS;
     }

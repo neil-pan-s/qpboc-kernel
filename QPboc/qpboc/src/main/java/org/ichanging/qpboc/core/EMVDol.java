@@ -16,7 +16,7 @@ public class EMVDol {
     private EMVBuf mEmvBuf = null;
     private byte[] mDol = null;
 
-    private HashMap<String,Integer> mDolMap = new HashMap<String, Integer>();
+    private HashMap<String,Integer> mDolMap = new HashMap<>();
 
     public EMVDol(EMVBuf emvBuf)
     {
