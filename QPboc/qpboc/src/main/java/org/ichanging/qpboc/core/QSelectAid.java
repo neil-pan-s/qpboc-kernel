@@ -60,7 +60,7 @@ public class QSelectAid extends QCore implements ProcessAble {
             return -1;
         }
 
-        // 终端类型
+        // terminal type
         mBuf.setTagValue(0x9F35, mParam._type);
         // 终端能力
         mBuf.setTagValue(0x9F33, mParam._cap);

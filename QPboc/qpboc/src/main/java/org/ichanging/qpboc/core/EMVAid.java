@@ -1,17 +1,14 @@
 package org.ichanging.qpboc.core;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.ichanging.qpboc.platform.LogUtil;
 import org.ichanging.qpboc.util.FileUtil;
 import org.ichanging.qpboc.util.HexUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
-import org.json.JSONTokener;
 
 import java.io.File;
-import java.util.Properties;
 
 /**
  * Created by ChangingP on 16/6/16.

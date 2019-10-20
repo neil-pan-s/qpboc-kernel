@@ -1,11 +1,9 @@
 package org.ichanging.qpboc.core;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.ichanging.qpboc.platform.LogUtil;
 import org.ichanging.qpboc.util.HexUtil;
-
-import java.util.Enumeration;
 
 /**
  * Created by ChangingP on 16/6/12.

@@ -1,18 +1,15 @@
 package org.ichanging.qpboc.platform;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.View;
+import androidx.appcompat.app.AlertDialog;
 import android.widget.Toast;
 
-import org.ichanging.qpboc.R;
 import org.ichanging.qpboc.callback.BooleanCallback;
 import org.ichanging.qpboc.callback.ByteArrayCallback;
 import org.ichanging.qpboc.callback.IntegerCallback;
-import org.ichanging.qpboc.callback.UICallback;
-import org.ichanging.qpboc.core.EMVCandidate;
 import org.ichanging.qpboc.core.CoreInterface;
+import org.ichanging.qpboc.core.EMVCandidate;
 import org.ichanging.qpboc.core.TransType;
 
 import java.util.ArrayList;

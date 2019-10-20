@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -14,7 +14,6 @@ import org.ichanging.qpboc.callback.QCallback;
 import org.ichanging.qpboc.core.QPboc;
 import org.ichanging.qpboc.platform.CoreAdapter;
 import org.ichanging.qpboc.platform.IsoDepAdapter;
-import org.ichanging.qpboc.util.HexUtil;
 
 public class MainActivity extends AppCompatActivity {
 
