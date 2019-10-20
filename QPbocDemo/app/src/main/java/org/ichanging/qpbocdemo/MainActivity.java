@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mQPboc.setParam("123456789012345","12345678","BCTC","FFFFFFFF");
 
         String field62 = "9F0608A000000333010101DF0101009F08020020DF1105D84000A800DF1205D84004F800DF130500100000009F1B0400000001DF150400000000DF160199DF170199DF14039F3704DF1801019F7B06000000100000DF1906000000100000DF2006000000100000DF2106000000100000";
-        //载入一个AID参数
+        //Load an AID parameter
         mQPboc.updateAid(field62,true);
 
     }
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     /*
      *
-     * launchMode为singleTask的时候 通过Intent启到一个Activity
-     * 如果系统已经存在一个实例 系统就会将请求发送到这个实例上
-     * 但这个时候 系统就不会再调用通常情况下我们处理请求数据的onCreate方法 而是调用onNewIntent方法
+     * When launchMode is singleTask, an activity is initiated through the Intent.
+     * If the system already has an instance, the system will send the request to this instance.
+     * But at this time, the system will not call the onCreate method that normally handles the request data, but instead calls the onNewIntent method.
      *
      */
     @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         String action = intent.getAction();
         final Context mContext = this;
 
-        //银行卡返回的ACTION 为 ACTION_TAG_DISCOVERED
+        //The ACTION returned by the row card is ACTION_TAG_DISCOVERED
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action))
         {
 
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
             mICC.onTagDiscovered(tagFromIntent);
 
-            //调用内核
+            //Calling the kernel
             mQPboc.onTransactionProcess((byte)0x0,1,new QCallback() {
 
                 @Override

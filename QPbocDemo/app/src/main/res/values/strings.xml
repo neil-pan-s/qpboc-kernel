@@ -1,3 +1,47 @@
 <resources>
-    <string name="app_name">QPbocDemo</string>
+	<string name="app_name">QPbocDemo</string>
+
+	<string name="STR_TERMINATION">Termination of the transaction</string>
+	<string name="STR_ACCEPT">Transaction approval</string>
+	<string name="STR_DECLINE">Transaction rejection</string>
+	<string name="STR_ICPOWERUPFAILED">IC card power failure \n exit transaction</string>
+	<string name="STR_TRYOTHEAR">Please try another interface</string>
+	<string name="STR_MORECARD">Please show a single card</string>
+	<string name="STR_SHOWCARD">Authorized amount: %%12.2f yuan \nPlease show the card</string>
+	<string name="STR_DEALING">in transaction...</string>
+	<string name="STR_CANNTGOONLINE">Unable to connect</string>
+	<string name="STR_REMOVECARD">Removable card</string>
+	<string name="STR_ONLINEING">Online...</string>
+	<string name="STR_ONLINE_FAILED">Online failure</string>
+	<string name="STR_APP_LOSE_EFFICACY">Card expired \n transaction failed</string>
+	<string name="STR_GOOFFLINE">Offline processing</string>
+	<string name="STR_DEAL_BALANCE_FMT">Consumption amount: %%12.2f yuan \n Available offline consumption amount: %%12.2f yuan</string>
+	<string name="STR_OFFLINE_BALANCE_FMT">Available offline consumption amount: %%12.2f yuan</string>
+	<string name="STR_TRANSTYPE_NOT_SUPPORT">Transaction type is not supported</string>
+
+	<string name="STR_GOONLINE">Online processing</string>
+	<string name="STR_OFFLINEDECLINE">Offline rejection</string>
+	<string name="STR_ONLINEDECLINE">Online rejection</string>
+	<string name="STR_ONLINE_ACCEPT">Online approval</string>
+	<string name="STR_ONLINE_DECLINE">Online rejection</string>
+	<string name="STR_OFFLINE_ACCEPT">Offline approval</string>
+	<string name="STR_SUCESS_OFFLINE">Offline transaction success</string>
+	<string name="STR_SUCESS_ONLINE">Online transaction success</string>
+	<string name="STR_CAPK_Expired">Public key expired</string>
+	<string name="STR_CAPK_WRONG">Public key error</string>
+	<string name="STR_CAPK_NOTFOUND">Public key not found</string>
+	<string name="STR_ONLINEBATCH">Batch data collection</string>
+	<string name="STR_ENDOFBATCH">End of collection</string>
+	<string name="STR_FILEFMT_ERR">File format error</string>
+	<string name="STR_COUNT_FMT">Section %%d</string>
+
+	<string name="MSG_ISSUERATH_FAILED">Issuer authentication failed</string>
+	<string name="MSG_PINTRYLIMIT_EXC">PIN attempts exceeded</string>
+	<string name="MSG_SERVICDENOTALLOWED">No service allowed</string>
+
+	<string name="MSG_ASKTOUSEECC">Whether to use e-cash for trading?</string>
+	<string name="MSG_PROCESSING">I am processing the IC card. Do not pull the card.</string>
+	<string name="MSG_AMOUNTOUTLIMIT">The amount exceeds the limit of the maximum rechargeable amount: %%.02f"</string>
+	<string name="MSG_FORCEONLINE">Whether to force online</string>
+
 </resources>
