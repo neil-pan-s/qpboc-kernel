@@ -83,7 +83,7 @@ public class QTerminalActionAnalysis  extends QCore implements ProcessAble{
             sn = mBuf.getTagValue("5F34");
             if (mParam.isInCardBlack(pan, sn[0]))
             {
-                //在卡黑名单里面，则脱机拒绝
+                //In the card blacklist, offline rejection
                 return QCORE_OFFLINEDECLINE;
             }
             else

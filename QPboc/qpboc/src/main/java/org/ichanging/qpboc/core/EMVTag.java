@@ -1,5 +1,7 @@
 package org.ichanging.qpboc.core;
 
+import android.support.annotation.NonNull;
+
 import org.ichanging.qpboc.platform.LogUtil;
 import org.ichanging.qpboc.util.HexUtil;
 
@@ -10,7 +12,7 @@ import java.util.Enumeration;
  */
 public class EMVTag {
 
-    private static final String TAG = "EMVTag";
+    private static final String TAG = EMVTag.class.getSimpleName();
 
     /**
      * Seem EMV Book 3 Annex B
@@ -18,9 +20,9 @@ public class EMVTag {
      */
 
     /**
-     * tagName b6 代表的是数据元结构
-     * = 0 简单数据元结构
-     * = 1 结构(复合)数据元结构
+     * tagName b6 Data element structure
+     * = 0 Simple data element structure
+     * = 1 Structure (composite) data element structure
      */
     public enum TagType {
 
@@ -38,8 +40,8 @@ public class EMVTag {
     }
 
     /**
-     * tagName b8,b7 代表数据的类别
-     * 根据2个位的组合,有四种类别:通用类别,应用类别,上下文语境类别,专用类别 主要用于在于终端设备交互的时候 确定数据处理的类型
+     * tagName b8,b7 The category that represents the data
+     * According to the combination of 2 bits, there are four categories: general category, application category, context context category, and dedicated category. It is mainly used to determine the type of data processing when the terminal device interacts.
      *
      */
     public enum TagClass{
@@ -170,7 +172,7 @@ public class EMVTag {
         if(!isUnique) {
             tagValue = value;
         }else{
-            LogUtil.i(TAG,"Tag - [" + HexUtil.ByteArrayToHexString(tagID) + "] is Unique,Can't be override!");
+            LogUtil.i(TAG,"Tag - [" + HexUtil.ByteArrayToHexString(tagID) + "] is Unique, can't be override !");
         }
     }
 
@@ -226,148 +228,149 @@ public class EMVTag {
 
         switch (utag)
         {
-            case 0x06:      str = "终端型号数据标签"; break;
-            case 0x4F:      str = "应用标识符（AID）"; break;
-            case 0x50:      str = "应用标签"; break;
-            case 0x57:      str = "磁条2等效数据"; break;
-            case 0x5A:      str = "应用主账号（PAN）"; break;
-            case 0x5F20:    str = "持卡人姓名"; break;
-            case 0x5F24:    str = "应用失效日期"; break;
-            case 0x5F25:    str = "应用生效日期"; break;
-            case 0x5F28:    str = "发卡行国家代码"; break;
-            case 0x5F2D:    str = "首选语言"; break;
-            case 0x5F30:    str = "服务码"; break;
-            case 0x5F34:    str = "应用主账号序列号"; break;
-            case 0x5F50:    str = "发卡行URL"; break;
-            case 0x61:      str = "应用模板"; break;
-            case 0x6F:      str = "文件控制信息 （FCI）模板"; break;
-            case 0x72:      str = "发卡行脚本模板2"; break;
-            case 0x73:      str = "目录自定义模板"; break;
-            case 0x77:      str = "响应报文模板格式2"; break;
-            case 0x80:      str = "响应报文模板格式1"; break;
-            case 0x82:      str = "应用交互特征（AIP）"; break;
-            case 0x84:      str = "专用文件（DF）名称"; break;
-            case 0x86:      str = "发卡行脚本命令"; break;
-            case 0x87:      str = "应用优先指示器"; break;
-            case 0x88:      str = "短文件标识符 （SFI）"; break;
-            case 0x8A:      str = "授权响应码"; break;
-            case 0x8C:      str = "卡片风险管理数据对象列表1（CDOL1）"; break;
-            case 0x8D:      str = "卡片风险管理数据对象列表 2（CDOL2）"; break;
-            case 0x8E:      str = "持卡人验证方法（CVM）列表"; break;
-            case 0x8F:      str = "CA公钥索引（PKI）"; break;
-            case 0x90:      str = "发卡行公钥证书"; break;
-            case 0x91:      str = "发卡行认证数据"; break;
-            case 0x92:      str = "发卡行公钥余数"; break;
-            case 0x93:      str = "签名的静态应用数据（SAD）"; break;
-            case 0x94:      str = "应用文件定位器（AFL）"; break;
-            case 0x97:      str = "交易证书数据对象"; break;
-            case 0x9D:      str = "目录数据文件 （DDF）名称"; break;
-            case 0x9F05:    str = "应用自定义数据"; break;
-            case 0x9F07:    str = "应用用途控制"; break;
-            case 0x9F08:    str = "应用版本号"; break;
-            case 0x9F0B:    str = "持卡人姓名扩展"; break;
-            case 0x9F0D:    str = "发卡行行为代码（IAC）-缺省"; break;
-            case 0x9F0E:    str = "发卡行行为代码（IAC）-拒绝"; break;
-            case 0x9F0F:    str = "发卡行行为代码（IAC）-联机"; break;
-            case 0x9F10:    str = "发卡行应用数据"; break;
-            case 0x9F11:    str = "发卡行代码表索引"; break;
-            case 0x9F12:    str = "应用首选名称"; break;
-            case 0x9F13:    str = "上次联机应用交易计数器（ATC）寄存器"; break;
-            case 0x9F14:    str = "连续脱机交易下限"; break;
-            case 0x9F17:    str = "PIN尝试计数器"; break;
-            case 0x9F1F:    str = "磁条1自定义数据"; break;
-            case 0x9F23:    str = "连续脱机交易上限"; break;
-            case 0x9F26:    str = "应用密文（AC）"; break;
-            case 0x9F27:    str = "密文信息数据"; break;
-            case 0x9F32:    str = "发卡行公钥指数"; break;
-            case 0x9F36:    str = "应用交易计数器"; break;
-            case 0x9F38:    str = "处理选项数据对象列表（PDOL）"; break;
-            case 0x9F42:    str = "应用货币代码"; break;
-            case 0x9F44:    str = "应用货币指数"; break;
-            case 0x9F45:    str = "数据认证码"; break;
-            case 0x9F46:    str = "IC卡公钥证书"; break;
-            case 0x9F47:    str = "IC卡公钥指数"; break;
-            case 0x9F48:    str = "IC卡公钥余数"; break;
-            case 0x9F49:    str = "动态数据认证数据对象列表（DDOL）"; break;
-            case 0x9F4A:    str = "静态数据认证标签列表"; break;
-            case 0x9F4B:    str = "签名的动态应用数据"; break;
-            case 0x9F4C:    str = "IC动态数"; break;
-            case 0x9F4D:    str = "日志入口"; break;
-            case 0x9F4F:    str = "日志格式"; break;
-            case 0x9F51:    str = "应用货币代码"; break;
-            case 0x9F52:    str = "应用缺省行为（ADA）"; break;
-            case 0x9F53:    str = "连续脱机交易限制数（国际-货币）"; break;
-            case 0x9F54:    str = "累计脱机交易金额限制数"; break;
-            case 0x9F56:    str = "发卡行认证指示位"; break;
-            case 0x9F57:    str = "发卡行国家代码"; break;
-            case 0x9F58:    str = "连续脱机交易下限"; break;
-            case 0x9F59:    str = "连续脱机交易上限"; break;
-            case 0x9F5A:    str = "发卡行URL2"; break;
-            case 0x9F5C:    str = "累计脱机交易金额上限"; break;
-            case 0x9F61:    str = "持卡人证件号"; break;
-            case 0x9F62:    str = "持卡人证件类型"; break;
-            case 0x9F63:    str = "卡产品标识信息"; break;
-            case 0x9F72:    str = "连续脱机交易限制数（国际-国家）"; break;
-            case 0x9F73:    str = "货币转换因子"; break;
-            case 0x9F75:    str = "累计脱机交易金额限制数（双货币）"; break;
-            case 0x9F76:    str = "第2应用货币"; break;
-            case 0xA5:      str = "文件控制信息 （FCI）专用模板"; break;
-            case 0xBF0C:    str = "文件控制信息 （FCI）发卡行自定义数据"; break;
+            case 0x06:      str = "Terminal model data label"; break;
+            case 0x4F:      str = "Application identifier (AID)"; break;
+            case 0x50:      str = "Application tag"; break;
+            case 0x57:      str = "Magnetic strip 2 equivalent data"; break;
+            case 0x5A:      str = "Application master account (PAN)"; break;
+            case 0x5F20:    str = "Cardholder's Name"; break;
+            case 0x5F24:    str = "Application expiration date"; break;
+            case 0x5F25:    str = "Application effective date"; break;
+            case 0x5F28:    str = "Issuer country code"; break;
+            case 0x5F2D:    str = "Preferred language"; break;
+            case 0x5F30:    str = "Service code"; break;
+            case 0x5F34:    str = "Application master account serial number"; break;
+            case 0x5F50:    str = "Issuer URL"; break;
+            case 0x61:      str = "Application template"; break;
+            case 0x6F:      str = "File Control Information (FCI) template"; break;
+            case 0x72:      str = "Issuer Script Template 2"; break;
+            case 0x73:      str = "Directory custom template"; break;
+            case 0x77:      str = "Response message template format 2"; break;
+            case 0x80:      str = "Response message template format 1"; break;
+            case 0x82:      str = "Application Interaction Feature (AIP)"; break;
+            case 0x84:      str = "Dedicated file (DF) name"; break;
+            case 0x86:      str = "Issuer script command"; break;
+            case 0x87:      str = "Application priority indicator"; break;
+            case 0x88:      str = "Short file identifier (SFI)"; break;
+            case 0x8A:      str = "Authorization response code"; break;
+            case 0x8C:      str = "Card Risk Management Data Object List 1 (CDOL1)"; break;
+            case 0x8D:      str = "Card Risk Management Data Object List 2 (CDOL2)"; break;
+            case 0x8E:      str = "Cardholder Verification Method (CVM) List"; break;
+            case 0x8F:      str = "CA Public Key Index (PKI)"; break;
+            case 0x90:      str = "Issuer Public Key Certificate"; break;
+            case 0x91:      str = "Issuer Certification Data"; break;
+            case 0x92:      str = "Issuer public key remainder"; break;
+            case 0x93:      str = "Signed Static Application Data (SAD)"; break;
+            case 0x94:      str = "Application File Locator (AFL)"; break;
+            case 0x97:      str = "Transaction certificate data object"; break;
+            case 0x9D:      str = "Directory data file (DDF) name"; break;
+            case 0x9F05:    str = "Apply custom data"; break;
+            case 0x9F07:    str = "Application control"; break;
+            case 0x9F08:    str = "Application version number"; break;
+            case 0x9F0A:    str = "APPLICATION_SELECTION_REGISTERED_PROPRIETARY_DATA - NEW"; break;
+            case 0x9F0B:    str = "Cardholder name extension"; break;
+            case 0x9F0D:    str = "Issuer Behavior Code (IAC) - Default"; break;
+            case 0x9F0E:    str = "Issuer Behavior Code (IAC) - Rejection"; break;
+            case 0x9F0F:    str = "Issuer Behavior Code (IAC) - Online"; break;
+            case 0x9F10:    str = "Issuer application data"; break;
+            case 0x9F11:    str = "Issuer Code Table Index"; break;
+            case 0x9F12:    str = "Application preferred name"; break;
+            case 0x9F13:    str = "Last online application transaction counter (ATC) register"; break;
+            case 0x9F14:    str = "Continuous offline trading floor"; break;
+            case 0x9F17:    str = "PIN try counter"; break;
+            case 0x9F1F:    str = "Magnetic stripe 1 custom data"; break;
+            case 0x9F23:    str = "Continuous offline transaction limit"; break;
+            case 0x9F26:    str = "Application Ciphertext (AC)"; break;
+            case 0x9F27:    str = "Ciphertext information data"; break;
+            case 0x9F32:    str = "Issuer Public Key Index"; break;
+            case 0x9F36:    str = "Application transaction counter"; break;
+            case 0x9F38:    str = "Processing Options Data Object List (PDOL)"; break;
+            case 0x9F42:    str = "Application currency code"; break;
+            case 0x9F44:    str = "Applied currency index"; break;
+            case 0x9F45:    str = "Data authentication code"; break;
+            case 0x9F46:    str = "IC card public key certificate"; break;
+            case 0x9F47:    str = "IC card public key index"; break;
+            case 0x9F48:    str = "IC card public key remainder"; break;
+            case 0x9F49:    str = "Dynamic Data Authentication Data Object List (DDOL)"; break;
+            case 0x9F4A:    str = "Static data authentication label list"; break;
+            case 0x9F4B:    str = "Signed dynamic application data"; break;
+            case 0x9F4C:    str = "IC dynamic number"; break;
+            case 0x9F4D:    str = "Log entry"; break;
+            case 0x9F4F:    str = "Log format"; break;
+            case 0x9F51:    str = "Application currency code"; break;
+            case 0x9F52:    str = "Apply default behavior (ADA)"; break;
+            case 0x9F53:    str = "Continuous offline transaction limit (international - currency)"; break;
+            case 0x9F54:    str = "Cumulative offline transaction amount limit"; break;
+            case 0x9F56:    str = "Issuer certification indicator"; break;
+            case 0x9F57:    str = "Issuer country code"; break;
+            case 0x9F58:    str = "Continuous offline trading floor"; break;
+            case 0x9F59:    str = "Continuous offline transaction limit"; break;
+            case 0x9F5A:    str = "Issuer URL2"; break;
+            case 0x9F5C:    str = "Cumulative offline transaction amount cap"; break;
+            case 0x9F61:    str = "Cardholder ID number"; break;
+            case 0x9F62:    str = "Cardholder ID Type"; break;
+            case 0x9F63:    str = "Card product identification information"; break;
+            case 0x9F72:    str = "Continuous offline transaction limit (International - Country)"; break;
+            case 0x9F73:    str = "Currency conversion factor"; break;
+            case 0x9F75:    str = "Cumulative offline transaction amount limit (dual currency)"; break;
+            case 0x9F76:    str = "Second application currency"; break;
+            case 0xA5:      str = "File Control Information (FCI) specific template"; break;
+            case 0xBF0C:    str = "File Control Information (FCI) Issuer Custom Data"; break;
 
-            // 交易明细记录文件内容
-            case 0x9A:      str = "交易日期"; break;
-            case 0x9F21:    str = "交易时间"; break;
-            case 0x9F02:    str = "授权金额"; break;
-            case 0x9F03:    str = "其它金额"; break;
-            case 0x9F1A:    str = "终端国家代码"; break;
-            case 0x5F2A:    str = "交易货币代码"; break;
-            case 0x9F4E:    str = "商户名称"; break;
-            case 0x9C:      str = "交易类型"; break;
-            case 0x9B:      str = "交易状态信息(TSI)"; break;
-            case 0x95:      str = "终端验证结果(TVR)"; break;
-            case 0x9F01	:   str = "收单行标识"; break;
-            case 0x9F15	:   str = "商户分类码"; break;
-            case 0x9F16	:   str = "商户标识"; break;
-            case 0x9F1C	:   str = "终端标识"; break;
-            case 0x9F1E	:   str = "接口设备序列号"; break;
-            case 0x9F33	:   str = "终端性能"; break;
-            case 0x9F34	:   str = "持卡人认证结果"; break;
-            case 0x9F35	:   str = "终端类型"; break;
-            case 0x9F37	:   str = "终端随机数"; break;
+            // Transaction detail record file content
+            case 0x9A:      str = "transaction date"; break;
+            case 0x9F21:    str = "transaction hour"; break;
+            case 0x9F02:    str = "Authorized amount"; break;
+            case 0x9F03:    str = "Other amount"; break;
+            case 0x9F1A:    str = "Terminal country code"; break;
+            case 0x5F2A:    str = "Transaction currency code"; break;
+            case 0x9F4E:    str = "Business Name"; break;
+            case 0x9C:      str = "Transaction Type"; break;
+            case 0x9B:      str = "Transaction Status Information (TSI)"; break;
+            case 0x95:      str = "Terminal Verification Result (TVR)"; break;
+            case 0x9F01	:   str = "Acquirer line identifier"; break;
+            case 0x9F15	:   str = "Merchant classification code"; break;
+            case 0x9F16	:   str = "Merchant identification"; break;
+            case 0x9F1C	:   str = "Terminal identification"; break;
+            case 0x9F1E	:   str = "Interface device serial number"; break;
+            case 0x9F33	:   str = "Terminal performance"; break;
+            case 0x9F34	:   str = "Cardholder Certification Results"; break;
+            case 0x9F35	:   str = "terminal type"; break;
+            case 0x9F37	:   str = "Terminal random number"; break;
             case 0x9F39	:   str = "POS Entry Mode"; break;
-            case 0xDF31	:   str = "脚本执行结果"; break;
-            case 0xDF41	:   str = "强制接受标识"; break;
-            case 0xDF51	:   str = "联机密文"; break;
-            case 0x9F66:    str = "终端交易属性"; break;
-            case 0x9F6C:    str = "卡片交易属性"; break;
-            case 0x9F5D:    str = "可脱机消费金额"; break;
-            case 0x9F41:    str = "终端流水号"; break;
+            case 0xDF31	:   str = "Script execution result"; break;
+            case 0xDF41	:   str = "Mandatory acceptance of the logo"; break;
+            case 0xDF51	:   str = "Online ciphertext"; break;
+            case 0x9F66:    str = "Terminal transaction attribute"; break;
+            case 0x9F6C:    str = "Card transaction attribute"; break;
+            case 0x9F5D:    str = "Available offline amount"; break;
+            case 0x9F41:    str = "Terminal serial number"; break;
 
-            case 0x9F06: str = "应用AID"; break;
-            case 0x9F22: str = "公钥索引"; break;
-            case 0xDF05: str = "公钥有效期"; break;
-            case 0xDF06: str = "公钥哈什算法标识"; break;
-            case 0xDF07: str = "公钥算法标识"; break;
-            case 0xDF02: str = "公钥模"; break;
-            case 0xDF04: str = "公钥指数"; break;
-            case 0xDF03: str = "公钥校验值"; break;
-            case 0xDF01: str = "应用选择指示符"; break;
-            case 0xDF11: str = "TAC缺省"; break;
-            case 0xDF12: str = "TAC联机"; break;
-            case 0xDF13: str = "TAC拒绝"; break;
-            case 0x9F1B: str = "终端最低限额"; break;
-            case 0xDF15: str = "偏置随机选择的阈值"; break;
-            case 0xDF16: str = "偏置随机选择的最大目标百分数"; break;
-            case 0xDF17: str = "随机选择的目标百分数"; break;
-            case 0xDF14: str = "缺省DDOL"; break;
-            case 0xDF18: str = "终端联机PIN支持能力"; break;
-            case 0x9F7B: str = "终端电子现金交易限额"; break;
-            case 0xDF19: str = "非接触读写器脱机最低限额"; break;
-            case 0xDF20: str = "非接触读写器交易限额"; break;
-            case 0xDF21: str = "非接触读写器CVM限额"; break;
+            case 0x9F06: str = "Application AID"; break;
+            case 0x9F22: str = "Public key index"; break;
+            case 0xDF05: str = "Public key validity period"; break;
+            case 0xDF06: str = "Public key hash algorithm identification"; break;
+            case 0xDF07: str = "Public key algorithm identification"; break;
+            case 0xDF02: str = "Public key module"; break;
+            case 0xDF04: str = "Public key index"; break;
+            case 0xDF03: str = "Public key check value"; break;
+            case 0xDF01: str = "Application selection indicator"; break;
+            case 0xDF11: str = "TACDefault"; break;
+            case 0xDF12: str = "TACOnline"; break;
+            case 0xDF13: str = "TACRefused"; break;
+            case 0x9F1B: str = "Terminal minimum"; break;
+            case 0xDF15: str = "Offset randomly selected threshold"; break;
+            case 0xDF16: str = "Offset randomly selected maximum target percentage"; break;
+            case 0xDF17: str = "Randomly selected target percentage"; break;
+            case 0xDF14: str = "Default DDOL"; break;
+            case 0xDF18: str = "Terminal online PIN support capability"; break;
+            case 0x9F7B: str = "Terminal electronic cash transaction limit"; break;
+            case 0xDF19: str = "Contactless reader offline minimum"; break;
+            case 0xDF20: str = "Contactless reader transaction limit"; break;
+            case 0xDF21: str = "Contactless reader CVM quota"; break;
 
             default:
-                str = String.format("未定义tag[%04X]", utag);
+                str = String.format("UndefinedTag [%04X]", utag);
                 break;
         }
 
@@ -433,6 +436,7 @@ public class EMVTag {
     }
 
     @Override
+    @NonNull
     public String toString() {
 
         String strClass = "",strValue = "";

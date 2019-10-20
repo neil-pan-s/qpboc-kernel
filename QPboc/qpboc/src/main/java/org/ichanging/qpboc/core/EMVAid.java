@@ -1,5 +1,7 @@
 package org.ichanging.qpboc.core;
 
+import android.support.annotation.NonNull;
+
 import org.ichanging.qpboc.platform.LogUtil;
 import org.ichanging.qpboc.util.FileUtil;
 import org.ichanging.qpboc.util.HexUtil;
@@ -17,24 +19,24 @@ import java.util.Properties;
 public class EMVAid
 {
     public byte[] _aid;         	        // 4F(ICC), 9F06(Terminal), b, 5-16 bytes
-    public byte   _app_sel_indicator;	    // ASI 应用选择指示符，指示应用选择时终端上的AID与卡片中的AID是完全匹配 还是部分匹配
-    public byte[] _app_ver;                 // 9F09(Terminal), b, 2 bytes ，应用版本号
-    public byte[] _tac_default;		        // DF11终端行为代码－缺省
-    public byte[] _tac_denial;		        // DF13终端行为代码－拒绝
-    public byte[] _tac_online;		        // DF12终端行为代码－联机
-    public byte[] _floorlimit;              // 9F1B(Terminal), b, 4 bytes ，终端最低限额
-    public byte[] _threshold_value;         // DF15偏置随机选择的阈值
-    public byte   _max_target_percent;	    // DF16偏置随机选择的最大目标百分数
-    public byte   _target_percent;		    // DF17随机选择目标百分数
-    public byte[] _default_ddol;            // DF14缺省动态数据认证数据对象列表（DDOL）
-    public byte   _online_pin_indicator;	// DF18终端联机PIN支持能力
-    public byte[] _ec_trans_limit;			// 9F7B,终端电子现金交易限额
-    public byte[] _qpboc_offline_limit; 	// DF19,非接触读写器脱机最低限额
-    public byte[] _qpboc_trans_limit;		// DF20,非接触读写器交易限额
-    public byte[] _qpboc_cvm_limit;			// DF21,读写器持卡人验证方法（CVM）所需限制
-    public byte[] _trans_type_support;      // 此AID支持的交易类型
+    public byte   _app_sel_indicator;	    // ASI Application selection indicator to indicate whether the AID on the terminal matches the AID in the card or is partially matched when the application is selected
+    public byte[] _app_ver;                 // 9F09(Terminal), b, 2 bytes ，Application version number
+    public byte[] _tac_default;		        // DF11Terminal behavior code - default
+    public byte[] _tac_denial;		        // DF13Terminal behavior code - rejection
+    public byte[] _tac_online;		        // DF12Terminal behavior code - online
+    public byte[] _floorlimit;              // 9F1B(Terminal), b, 4 bytes ，Terminal minimum
+    public byte[] _threshold_value;         // DF15Offset randomly selected threshold
+    public byte   _max_target_percent;	    // DF16Offset randomly selected maximum target percentage
+    public byte   _target_percent;		    // DF17Random selection of target percentage
+    public byte[] _default_ddol;            // DF14Default Dynamic Data Authentication Data Object List (DDOL)
+    public byte   _online_pin_indicator;	// DF18Terminal online PIN support capability
+    public byte[] _ec_trans_limit;			// 9F7B,Terminal electronic cash transaction limit
+    public byte[] _qpboc_offline_limit; 	// DF19,Contactless reader offline minimum
+    public byte[] _qpboc_trans_limit;		// DF20,Contactless reader transaction limit
+    public byte[] _qpboc_cvm_limit;			// DF21,Limitations required for the reader card verification method (CVM)
+    public byte[] _trans_type_support;      // The transaction type supported by this AID
 
-    public static final String _aids_folder     = "aids/";      //AID列表文件目录
+    public static final String _aids_folder     = "aids/";      //AID list file directory
     private static final String TAG = "EMVAID";
 
     private String mDataPath = null;
@@ -44,21 +46,21 @@ public class EMVAid
 
         /*
         9F 06  08  A0 00 00 03 33 01 01 01 	// AID
-        DF 01 01 00 	// 应用选择指示符（ASI）
-        9F 08 02 00 20  //应用版本号
-        DF 11 05 D8 40 00 A8 00  //TAC－缺省
-        DF 12 05 D8 40 04 F8 00  //TAC－联机
-        DF 13 05 00 10 00 00 00	//TAC－拒绝
-        9F 1B 04 00 00 00 01 		//终端最低限额
-        DF 15 04 00 00 00 00 		//偏置随机选择的阈值
-        DF 16 01 99 				//偏置随机选择的最大目标百分数
-        DF 17 01 99 				//随机选择的目标百分数
+        DF 01 01 00 	// Application selection indicator (ASI)
+        9F 08 02 00 20  //Application version number
+        DF 11 05 D8 40 00 A8 00  //TAC－Default
+        DF 12 05 D8 40 04 F8 00  //TAC－Online
+        DF 13 05 00 10 00 00 00	//TAC－Reject
+        9F 1B 04 00 00 00 01 		//Terminal minimum
+        DF 15 04 00 00 00 00 		//Offset randomly selected threshold
+        DF 16 01 99 				//Offset randomly selected maximum target percentage
+        DF 17 01 99 				//Randomly selected target percentage
         DF 14 03  		//缺省DDOL
         9F 37 04	//终端不可预知数
         DF 18 01 01 	//终端联机PIN支持能力  支持联机PIN
-        9F 7B 06 00 00 00 10 00 00 	//终端电子现金交易限额
-        DF 19 06 00 00 00 10 00 00 	//非接触读写器脱机最低限额
-        DF 20 06 00 00 00 10 00 00 	//非接触读写器交易限额
+        9F 7B 06 00 00 00 10 00 00 	//Terminal electronic cash transaction limit
+        DF 19 06 00 00 00 10 00 00 	//Contactless reader offline minimum
+        DF 20 06 00 00 00 10 00 00 	//Contactless reader transaction limit
         DF 21 06 00 00 00 10 00 00	//读写器持卡人验证方法（CVM）所需限制	如果非接触交易超过此值，读写器要求一个持卡人验证方法（CVM）。
         */
 
@@ -75,8 +77,8 @@ public class EMVAid
         }
 
 
-        //获取应用AID
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0x9F06 应用AID");
+        //Get the app AID
+        LogUtil.i(TAG,"Genetate EMVAID - Parse 0x9F06 Apply AID");
         if((tag = tlv.childTag("9F06")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing 9F06");
@@ -84,7 +86,7 @@ public class EMVAid
         }
         aid._aid = tag.value;
 
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF01 应用选择指示符");
+        LogUtil.i(TAG,"Genetate EMVAID - Parsing 0xDF01 app selection indicator");
         if((tag = tlv.childTag("DF01")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF01");
@@ -100,8 +102,8 @@ public class EMVAid
             aid._app_sel_indicator = 1;
         }
 
-        //获取应用版本号
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0x9F08 应用版本号");
+        //Get the app version number
+        LogUtil.i(TAG,"Genetate EMVAID - Parsing 0x9F08 application version number");
         if((tag = tlv.childTag("9F08")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing 9F08");
@@ -109,8 +111,8 @@ public class EMVAid
         }
         aid._app_ver = tag.value;
 
-        //TAC缺省
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF11 TAC缺省");
+        //TAC default
+        LogUtil.i(TAG,"Genetate EMVAID -Parse 0xDF11 TAC default");
         if((tag = tlv.childTag("DF11")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF11");
@@ -118,8 +120,8 @@ public class EMVAid
         }
         aid._tac_default = tag.value;
 
-        //TAC拒绝
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF13 TAC拒绝");
+        //TAC refused
+        LogUtil.i(TAG,"Genetate EMVAID - Resolution 0xDF13 TAC rejection");
         if((tag = tlv.childTag("DF13")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF13");
@@ -127,8 +129,8 @@ public class EMVAid
         }
         aid._tac_denial = tag.value;
 
-        //TAC联机
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF12 TAC联机");
+        //TAC online
+        LogUtil.i(TAG,"Genetate EMVAID - Resolution 0xDF12 TAC connection");
         if((tag = tlv.childTag("DF12")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF12");
@@ -137,7 +139,7 @@ public class EMVAid
         aid._tac_online = tag.value;
 
         //floor limit , may be empty
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0x9F1B 终端最低限额");
+        LogUtil.i(TAG,"Genetate EMVAID - Resolve 0x9F1B terminal minimum");
         if((tag = tlv.childTag("9F1B")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing 9F1B");
@@ -147,7 +149,7 @@ public class EMVAid
         }
 
         //threshold value
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF15 偏置随机选择的阈值");
+        LogUtil.i(TAG,"Genetate EMVAID - Parse 0xDF15 Offset Randomly Selected Threshold");
         if((tag = tlv.childTag("DF15")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF15");
@@ -156,7 +158,7 @@ public class EMVAid
         aid._threshold_value = tag.value;
 
         //max target percent
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF16 偏置随机选择的最大目标百分数");
+        LogUtil.i(TAG,"Genetate EMVAID - Parse 0xDF16 Offset Randomly Selected Maximum Target Percentage");
         if((tag = tlv.childTag("DF16")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF16");
@@ -165,7 +167,7 @@ public class EMVAid
         aid._max_target_percent = (byte) Integer.parseInt(HexUtil.ByteArrayToHexString(tag.value));
 
         //target percent
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF17 随机选择的目标百分数");
+        LogUtil.i(TAG,"Genetate EMVAID - Parse 0xDF17 randomly selected target percentage");
         if((tag = tlv.childTag("DF17")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF17");
@@ -174,7 +176,7 @@ public class EMVAid
         aid._target_percent = (byte) Integer.parseInt(HexUtil.ByteArrayToHexString(tag.value));
 
         //default ddol
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF14 缺省DDOL");
+        LogUtil.i(TAG,"Genetate EMVAID - Parse 0xDF14 default DDOL");
         if((tag = tlv.childTag("DF14")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF14");
@@ -183,7 +185,7 @@ public class EMVAid
         aid._default_ddol = tag.value;
 
         //pos entry
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF18 终端联机PIN支持能力");
+        LogUtil.i(TAG,"Genetate EMVAID - Analyze 0xDF18 terminal online PIN support capability");
         if((tag = tlv.childTag("DF18")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF18");
@@ -192,9 +194,9 @@ public class EMVAid
         aid._online_pin_indicator = tag.value[0];
 
 
-        //电子现金参数
-        //终端电子现金交易限额
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0x9F7B 终端电子现金交易限额");
+        //Electronic cash parameters
+        //Terminal electronic cash transaction limit
+        LogUtil.i(TAG,"Genetate EMVAID - Analyze 0x9F7B terminal electronic cash transaction limit");
         if((tag = tlv.childTag("9F7B")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing 9F7B");
@@ -203,9 +205,9 @@ public class EMVAid
             aid._ec_trans_limit = tag.value;
         }
 
-        //QPBOC参数
-        //非接触读写器脱机最低限额
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF19 非接触读写器脱机最低限额");
+        //QPBOC parameters
+        //Contactless reader offline minimum
+        LogUtil.i(TAG,"Genetate EMVAID - Resolve 0xDF19 contactless reader offline minimum");
         if((tag = tlv.childTag("DF19")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF19");
@@ -214,8 +216,8 @@ public class EMVAid
             aid._qpboc_offline_limit = tag.value;
         }
 
-        //非接触读写器交易限额
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF20 非接触读写器交易限额");
+        //Contactless reader transaction limit
+        LogUtil.i(TAG,"Genetate EMVAID - Resolve 0xDF20 contactless reader transaction limit");
         if((tag = tlv.childTag("DF20")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF20");
@@ -225,8 +227,8 @@ public class EMVAid
         }
 
 
-        //读写器持卡人验证方法（CVM）所需限制
-        LogUtil.i(TAG,"Genetate EMVAID - 解析 0xDF21 读写器持卡人验证方法（CVM）所需限制");
+        //Limitations required for the reader card verification method (CVM)
+        LogUtil.i(TAG,"Genetate EMVAID - Resolve the restrictions required by the 0xDF21 Reader Cardholder Verification Method (CVM)");
         if((tag = tlv.childTag("DF21")) == null || tag.value == null)
         {
             LogUtil.i(TAG,"Genetate EMVAID - Missing DF21");
@@ -341,6 +343,7 @@ public class EMVAid
     }
 
     @Override
+    @NonNull
     public String toString() {
         return aid2json();
     }

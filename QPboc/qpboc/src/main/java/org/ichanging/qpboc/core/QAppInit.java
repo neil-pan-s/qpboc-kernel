@@ -15,7 +15,7 @@ public class QAppInit extends QCore implements ProcessAble{
 
     private int validGPOData()
     {
-        //检查GPO返回的必备标签
+        //Check the mandatory labels returned by the GPO
         String[] tagTable = {"82", "9F36", "57", "9F26", "9F10"};
 
 		for (String s : tagTable) {
@@ -183,10 +183,10 @@ public class QAppInit extends QCore implements ProcessAble{
 
                 for(int i = 0; i <  tlvTag.value.length;)
                 {
-                    iSfi = ((tlvTag.value[i++]>>3)&0x1F);       //字节1：位8–4=SFI短文件标识符
-                    iFrec = tlvTag.value[i++];                  //字节2：文件中要读的第 1 个记录的记录号（不能为0）
-                    iLrec = tlvTag.value[i++];                  //字节3：文件中要读的最后一个记录的记录号 （等于或大于字节2）
-                    iNrec = tlvTag.value[i++];                  //字节4：从字节 2中的记录号开始，存放认证用静态数据记录的个数（值从 0到字节3-字节2+1的值）
+                    iSfi = ((tlvTag.value[i++]>>3)&0x1F);       //Byte 1: Bit 8–4 = SFI short file identifier
+                    iFrec = tlvTag.value[i++];                  //Byte 2: Record number of the first record to be read in the file (cannot be 0)
+                    iLrec = tlvTag.value[i++];                  //Byte 3: Record number of the last record to be read in the file (equal to or greater than byte 2)
+                    iNrec = tlvTag.value[i++];                  //Byte 4: The number of static data records for authentication (value from 0 to byte 3 to 2+1) is stored starting from the record number in byte 2.
 
                     if (iSfi < 1 || iSfi >= 0x1F || iFrec == 0 || (iLrec < iFrec) || (iNrec > iLrec - iFrec + 1))
                     {
@@ -196,7 +196,7 @@ public class QAppInit extends QCore implements ProcessAble{
             }
             tlv.setTlv(rsp.data);
 
-            //CLQA01300 不能替换9F02,  但交易得成功
+            //CLQA01300 can't replace 9F02, but the transaction is successful
             mBuf.findTag("9F02").setUnique(true);
             if(!mBuf.tlv2buf(tlv))
             {
@@ -222,7 +222,7 @@ public class QAppInit extends QCore implements ProcessAble{
             return iRet;
         }
 
-        /*//终端不会支持MSD,  故不作MSD的判断
+        /*//The terminal will not support MSD, so it is not judged by MSD.
         if((utag82[1] & 0x80) == 0x80)
         {
             return QCORE_CHOOSEMSD;
@@ -265,7 +265,7 @@ public class QAppInit extends QCore implements ProcessAble{
         {
             if(QCORE_INITAPP6985 == iRet)
             {
-                // 重新选择AID
+                // Reselect AID
                 mOption.getProcessSwitch().onNextProcess(QCORE_INITAPP6985);
                 return;
             }
@@ -277,11 +277,11 @@ public class QAppInit extends QCore implements ProcessAble{
             }
         }else{
 
-            //根据卡的返回值判断使用的界面
+            //Determine the interface to use based on the return value of the card
             if(iRet == QCORE_PBOC)
             {
                 mICC.powerOff();
-                //如果终端支持PBOC流程
+                //If the terminal supports the PBOC process
                 if(mParam.capa_options(EMVParam.CAPA_Support_Contact_Pboc))
                 {
                     mAdapter._ShowMessage(mAdapter._I18NString("STR_TERMINATION"), 500);

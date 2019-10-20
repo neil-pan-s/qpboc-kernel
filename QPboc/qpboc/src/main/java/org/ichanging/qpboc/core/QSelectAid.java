@@ -38,7 +38,7 @@ public class QSelectAid extends QCore implements ProcessAble {
                 break;
             }
 
-            // 允许部分匹配
+            // Allow partial matching
             if( candidate._aid.length > aid._aid.length && aid._app_sel_indicator == 0)
             {
                 byte[] tmp = new byte[aid._aid.length];
@@ -204,19 +204,19 @@ public class QSelectAid extends QCore implements ProcessAble {
 
         mCandidateList = mParam.getCandidates();
 
-        // 选择未被选择的AID并进行应用初始化
+        // Select an unselected AID and apply application initialization
         for(int i = 0; i < mCandidateList.size(); i++)
         {
             mCurCandidate = mCandidateList.get(i);
 
-            if(mCurCandidate._isSelected == false)
+            if(!mCurCandidate._isSelected)
             {
                 break;
             }
         }
 
-        // 所有AID都已经被选择过
-        if(mCurCandidate._isSelected == true)
+        // All AIDs have been selected
+        if(mCurCandidate._isSelected)
         {
             LogUtil.w(TAG, "All Candidates Selected");
 

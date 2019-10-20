@@ -123,7 +123,7 @@ public interface CoreInterface {
      * Kernel Callback Select Account Type
      *
      * @param callback return the index id of account type
-     * 0x00 默认-未指定 0x10 储蓄账户 0x20 支票账户/借记账户 0x30 信用账户
+     * 0x00 Default - Unspecified 0x10 Savings Account 0x20 Checking Account / Debit Account 0x30 Credit Account
      *
      * @return
      */
@@ -133,7 +133,7 @@ public interface CoreInterface {
     /**
      * Kernel Callback CardHolder to Confirm ID Info
      *
-     * @param type 0x00:身份证 0x01:军官证 0x02:护照 0x03:入境证 0x04:临时身份证 0x05:其它
+     * @param type 0x00: ID card 0x01: Military officer card 0x02: Passport 0x03: Entry permit 0x04: Temporary ID card 0x05: Other
      * @param pcon
      * @param callback  return user confirm choose yse or no
      *

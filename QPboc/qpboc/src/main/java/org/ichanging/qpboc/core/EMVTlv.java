@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class EMVTlv implements Iterator<TLVTag> {
 
-    private static final String TAG = "EMVTlv";
+    private static final String TAG = EMVTlv.class.getSimpleName();
     private byte[] mTlv = null;
     private int mOffset = 0;
     private TLVTag mTag = null;

@@ -71,7 +71,7 @@ public class QCardholderVerification extends QCore implements ProcessAble {
 
                         LogUtil.i(TAG, "onlinePin[" + HexUtil.ByteArrayToHexString(value) + "]");
 
-                        // 记录联机密码
+                        // Record online password
                         mOption._onlinePIN = value;
                         mOption.getQCallback().onOnline();
                     }

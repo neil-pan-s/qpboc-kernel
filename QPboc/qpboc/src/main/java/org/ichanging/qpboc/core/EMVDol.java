@@ -141,7 +141,7 @@ public class EMVDol {
 
         }
 
-        return  ( iOffset == dol.length) ? true : false ;
+        return iOffset == dol.length;
     }
 
 
@@ -231,8 +231,4 @@ public class EMVDol {
 
         return dolValue;
     }
-
-
-
-
 }

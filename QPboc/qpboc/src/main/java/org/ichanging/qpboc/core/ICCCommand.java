@@ -8,7 +8,7 @@ import org.ichanging.qpboc.platform.LogUtil;
  */
 public class ICCCommand {
 
-    private static final String TAG = "ICCCommand";
+    private static final String TAG = ICCCommand.class.getSimpleName();
 
     // Format: [CLASS | INSTRUCTION | PARAMETER 1 | PARAMETER 2 | LC | LE]
     public static final byte[] APDU_SELECT_AID          = { 0x00 , (byte)0xA4 , 0x04 , 0x00 , 0x00 , 0x00 };

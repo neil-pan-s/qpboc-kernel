@@ -71,7 +71,7 @@ public class QReadAppData extends QCore implements ProcessAble{
 
         while(i < tag94.length)
         {
-            iSfi = ((tag94[i++]>>3)&0x1F);      //字节1：位8–4=SFI短文件标识符
+            iSfi = ((tag94[i++]>>3)&0x1F);      //Byte 1: Bit 8–4 = SFI short file identifier
             iFrec = tag94[i++];                 //字节2：文件中要读的第 1 个记录的记录号（不能为0）
             iLrec = tag94[i++];                 //字节3：文件中要读的最后一个记录的记录号 （等于或大于字节2）
             iNrec = tag94[i++];                 //字节4：从字节 2中的记录号开始，存放认证用静态数据记录的个数（值从 0到字节3-字节2+1的值）
@@ -129,7 +129,7 @@ public class QReadAppData extends QCore implements ProcessAble{
                     {
                         tag = tlv.next();
 
-                        //存标签
+                        //Save label
                         if( (tag.tag.equals("5A") || tag.tag.equals("57") || tag.tag.equals("5F24")) && mBuf.getTagValue(tag.tag) != null)
                         {
                             return QCORE_SAVEAPPDATA;

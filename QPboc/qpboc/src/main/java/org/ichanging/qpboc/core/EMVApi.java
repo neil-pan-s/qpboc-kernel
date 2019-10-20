@@ -39,11 +39,11 @@ public class EMVApi {
         mBuf.setTagValue("9F1A",mParam._term_country_code);     // 9F1A(Terminal), n3, 2 bytes ，终端国家代码
         mBuf.setTagValue("9F1E",mParam._ifd_serial_num);        // 9F1E(Terminal), an8, 8 bytes ，接口设备（IFD）序列号
         mBuf.setTagValue("9F1C",mParam._terminal_id);           // 9F1C(Terminal), an8, 8 bytes ，终端标识
-        mBuf.setTagValue("9F38",mParam._default_tdol);          // 缺省交易证书数据对象列表（TDOL）
+        mBuf.setTagValue("9F38",mParam._default_tdol);          // Default Transaction Certificate Data Object List (TDOL)
 
-        mBuf.setTagValue("9F35",mParam._type);     // 9F35(Terminal), n2, 1 ,终端类型
-        mBuf.setTagValue("9F33",mParam._cap);      // 9F33(Terminal), b,  3 ，终端能力
-        mBuf.setTagValue("9F40",mParam._add_cap);  // 9F40(Terminal), b,  5 ，终端附加能力
+        mBuf.setTagValue("9F35",mParam._type);     // 9F35(Terminal), n2, 1 ,terminal type
+        mBuf.setTagValue("9F33",mParam._cap);      // 9F33(Terminal), b,  3 ，Terminal capability
+        mBuf.setTagValue("9F40",mParam._add_cap);  // 9F40(Terminal), b,  5 ，Terminal add-on capability
     }
 
     public void setParam(String pid,String tid,String sname,String sn)
