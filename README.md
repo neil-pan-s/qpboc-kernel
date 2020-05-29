@@ -5,7 +5,7 @@ Android NFC QPboc Support, for POS Developer.
 
 # Features
 
-![QPboc-Kata](./QPboc-kata.png)
+![QPboc-Kata](QPboc-kata.png)
 
 
 
