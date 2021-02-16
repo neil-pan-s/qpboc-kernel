@@ -14,9 +14,9 @@ import java.util.HashMap;
  */
 public class EMVBuf {
 
-    private static final String TAG = "EMVBuf";
+    private static final String TAG = EMVBuf.class.getSimpleName();
 
-    private static HashMap<String,EMVTag> mTlvMap = new HashMap<String , EMVTag>();
+    private static HashMap<String,EMVTag> mTlvMap = new HashMap<>();
 
     /**
      *
@@ -170,12 +170,12 @@ public class EMVBuf {
     public static final EMVTag EXTENDED_SELECTION                      = new EMVTag("9f29", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Indicates the card's preference for the kernel on which the contactless application can be processed", "");
     public static final EMVTag KERNEL_IDENTIFIER                       = new EMVTag("9f2a", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "The value to be appended to the ADF Name in the data field of the SELECT command, if the Extended Selection Support flag is present and set to 1", "");
 
-    public static final EMVTag TAG_9F6C  = new EMVTag("9f6c", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "卡片交易属性", "");
-    public static final EMVTag TAG_9F5D  = new EMVTag("9f5d", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "可脱机消费金额", "");
-    public static final EMVTag TAG_9F63  = new EMVTag("9f63", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "卡产品标识信息", "");
-    public static final EMVTag TAG_9F74  = new EMVTag("9f74", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "电子现金发卡行授权码", "");
-    public static final EMVTag TAG_9F79  = new EMVTag("9f79", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "电子现金余额", "");
-    public static final EMVTag TAG_9F7B  = new EMVTag("9f7b", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "终端电子现金交易限额", "");
+    public static final EMVTag TAG_9F6C  = new EMVTag("9f6c", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Card transaction attribute", "");
+    public static final EMVTag TAG_9F5D  = new EMVTag("9f5d", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Available offline amount", "");
+    public static final EMVTag TAG_9F63  = new EMVTag("9f63", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Card product identification information", "");
+    public static final EMVTag TAG_9F74  = new EMVTag("9f74", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Electronic cash issuing bank authorization code", "");
+    public static final EMVTag TAG_9F79  = new EMVTag("9f79", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Electronic cash balance", "");
+    public static final EMVTag TAG_9F7B  = new EMVTag("9f7b", null ,EMVTag.TagFrom.FROM_IC, EMVTag.TagFormat.BINARY, "Terminal electronic cash transaction limit", "");
 
 
     // 90 tag
@@ -256,7 +256,7 @@ public class EMVBuf {
 
     public void setTagValue(String tag,byte value)
     {
-        byte[] bytes = { (byte) value};
+        byte[] bytes = {value};
 
         setTagValue(tag,bytes);
     }
@@ -272,7 +272,7 @@ public class EMVBuf {
 
     public void setTagValue(int tag,byte value)
     {
-        byte[] bytes = { (byte) value};
+        byte[] bytes = {value};
 
         setTagValue(tag,bytes);
     }
@@ -289,23 +289,23 @@ public class EMVBuf {
 
     public void setTransAmount(int iCash , int iCashBack)
     {
-        byte[] buf = null;
+        byte[] buf;
 
-        // 9f04 返现金额 binary
+        // 9f04 Cash back amount binary
         buf = HexUtil.UnsignedIntToByte4 (iCashBack);
         setTagValue(0x9F04, buf);
 
-        // 9f03 返现金额 number
+        // 9f03 Cash back amount number
         String Cashback =  String.format("%012d", iCashBack);
         buf = HexUtil.HexStringToByteArray(Cashback);
         setTagValue(0x9F03, buf);
 
-        // 81 授权金额 binary
+        // 81 Authorized amount binary
         iCash += iCashBack;
         buf = HexUtil.UnsignedIntToByte4 (iCash);
         setTagValue(0x81, buf);
 
-        // 9f02 授权金额 number
+        // 9f02 Authorized amount number
         String Cash =  String.format("%012d", iCash);
         buf = HexUtil.HexStringToByteArray(Cash);
         setTagValue(0x9F02, buf);
@@ -344,8 +344,8 @@ public class EMVBuf {
 
     public boolean tlv2buf(EMVTlv tlv)
     {
-        TLVTag tlvTag = null;
-        byte[] btag = null;
+        TLVTag tlvTag;
+        byte[] btag;
 
         while (tlv.hasNext())
         {

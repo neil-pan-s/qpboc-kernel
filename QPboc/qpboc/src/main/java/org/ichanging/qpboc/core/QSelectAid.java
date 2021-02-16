@@ -38,7 +38,7 @@ public class QSelectAid extends QCore implements ProcessAble {
                 break;
             }
 
-            // 允许部分匹配
+            // Allow partial matching
             if( candidate._aid.length > aid._aid.length && aid._app_sel_indicator == 0)
             {
                 byte[] tmp = new byte[aid._aid.length];
@@ -60,7 +60,7 @@ public class QSelectAid extends QCore implements ProcessAble {
             return -1;
         }
 
-        // 终端类型
+        // terminal type
         mBuf.setTagValue(0x9F35, mParam._type);
         // 终端能力
         mBuf.setTagValue(0x9F33, mParam._cap);
@@ -105,10 +105,10 @@ public class QSelectAid extends QCore implements ProcessAble {
 
     private int SelectAid(EMVCandidate candidate)
     {
-        int iRet = QCORE_SUCESS;
+        int iRet;
         ICCResponse rsp = new ICCResponse();
-        EMVTlv tlv = null,subtlv = null;
-        TLVTag tlvTag = null;
+        EMVTlv tlv,subtlv = null;
+        TLVTag tlvTag;
         byte[] btag = null;
 
         mBuf.setTagValue("4F",candidate._aid);
@@ -168,7 +168,7 @@ public class QSelectAid extends QCore implements ProcessAble {
 
     public int process() {
 
-        int iRet = QCORE_SUCESS;
+        int iRet;
 
         LogUtil.i(TAG, "------------------ QSelectAid Start -------------------");
 
@@ -204,19 +204,19 @@ public class QSelectAid extends QCore implements ProcessAble {
 
         mCandidateList = mParam.getCandidates();
 
-        // 选择未被选择的AID并进行应用初始化
+        // Select an unselected AID and apply application initialization
         for(int i = 0; i < mCandidateList.size(); i++)
         {
             mCurCandidate = mCandidateList.get(i);
 
-            if(mCurCandidate._isSelected == false)
+            if(!mCurCandidate._isSelected)
             {
                 break;
             }
         }
 
-        // 所有AID都已经被选择过
-        if(mCurCandidate._isSelected == true)
+        // All AIDs have been selected
+        if(mCurCandidate._isSelected)
         {
             LogUtil.w(TAG, "All Candidates Selected");
 

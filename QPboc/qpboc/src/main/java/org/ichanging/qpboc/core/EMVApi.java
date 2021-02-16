@@ -39,11 +39,11 @@ public class EMVApi {
         mBuf.setTagValue("9F1A",mParam._term_country_code);     // 9F1A(Terminal), n3, 2 bytes ，终端国家代码
         mBuf.setTagValue("9F1E",mParam._ifd_serial_num);        // 9F1E(Terminal), an8, 8 bytes ，接口设备（IFD）序列号
         mBuf.setTagValue("9F1C",mParam._terminal_id);           // 9F1C(Terminal), an8, 8 bytes ，终端标识
-        mBuf.setTagValue("9F38",mParam._default_tdol);          // 缺省交易证书数据对象列表（TDOL）
+        mBuf.setTagValue("9F38",mParam._default_tdol);          // Default Transaction Certificate Data Object List (TDOL)
 
-        mBuf.setTagValue("9F35",mParam._type);     // 9F35(Terminal), n2, 1 ,终端类型
-        mBuf.setTagValue("9F33",mParam._cap);      // 9F33(Terminal), b,  3 ，终端能力
-        mBuf.setTagValue("9F40",mParam._add_cap);  // 9F40(Terminal), b,  5 ，终端附加能力
+        mBuf.setTagValue("9F35",mParam._type);     // 9F35(Terminal), n2, 1 ,terminal type
+        mBuf.setTagValue("9F33",mParam._cap);      // 9F33(Terminal), b,  3 ，Terminal capability
+        mBuf.setTagValue("9F40",mParam._add_cap);  // 9F40(Terminal), b,  5 ，Terminal add-on capability
     }
 
     public void setParam(String pid,String tid,String sname,String sn)
@@ -92,16 +92,16 @@ public class EMVApi {
          9F41 04 00000000
          */
 
-        int tagTable[] =
+        int[] tagTable =
                 {
                         0x9F26, 0x9F27, 0x9F10, 0x9F37, 0x9F36, 0x95, 0x9A, 0x9C,
                         0x9F02, 0x5F2A, 0x82, 0x9F1A, 0x9F03, 0x9F33, 0x9F34, 0x9F35, 0x9F1E, 0x84,
                         0x9F09, 0x9F41
                 };
 
-        EMVTag tag = null;
-        byte[] tmp = null , field = new byte[1024];
-        int len = 0,fieldLen = 0;
+        EMVTag tag;
+        byte[] tmp, field = new byte[1024];
+        int len,fieldLen = 0;
 
         int iTraceNumber = mAdapter._inc_tsc();
         mBuf.setTagValue("9F41",HexUtil.UnsignedIntToByte4(iTraceNumber));

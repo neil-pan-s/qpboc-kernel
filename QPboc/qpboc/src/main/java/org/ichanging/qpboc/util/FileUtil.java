@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class FileUtil {
 
-    //写/data/data/<应用程序名>目录上的文件数据
+    //Write file data on the /data/data/<application name> directory
     public static void writeAidFile(String fileName,byte[] data)
     {
 
@@ -35,7 +35,7 @@ public class FileUtil {
         }
     }
 
-    //读/data/data/<应用程序名>目录上的文件数据
+    //Read file data on the /data/data/<application name> directory
     public static byte[] readAidFile(String fileName)
     {
         byte [] buffer = null;

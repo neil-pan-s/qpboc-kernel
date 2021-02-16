@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/QPboc/QPboc.iml" filepath="$PROJECT_DIR$/QPboc/QPboc.iml" group="qpboc-kernel/QPboc" />
+      <module fileurl="file://$PROJECT_DIR$/QPbocDemo/QPbocDemo.iml" filepath="$PROJECT_DIR$/QPbocDemo/QPbocDemo.iml" group="qpboc-kernel/QPbocDemo" />
+      <module fileurl="file://$PROJECT_DIR$/QPbocDemo/app/app.iml" filepath="$PROJECT_DIR$/QPbocDemo/app/app.iml" group="qpboc-kernel/QPbocDemo/app" />
+      <module fileurl="file://$PROJECT_DIR$/QPboc/qpboc/qpboc.iml" filepath="$PROJECT_DIR$/QPboc/qpboc/qpboc.iml" group="qpboc-kernel/QPboc/qpboc" />
+      <module fileurl="file://$PROJECT_DIR$/qpboc-kernel.iml" filepath="$PROJECT_DIR$/qpboc-kernel.iml" group="qpboc-kernel" />
+    </modules>
+  </component>
+</project>

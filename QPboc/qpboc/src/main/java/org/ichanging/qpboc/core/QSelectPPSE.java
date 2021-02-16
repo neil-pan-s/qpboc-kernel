@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class QSelectPPSE extends QCore implements ProcessAble {
 
     private static final String TAG = "QSelectPPSE";
-    private ArrayList<EMVCandidate> mCandidateList = null;
+    private ArrayList<EMVCandidate> mCandidateList;
 
     public QSelectPPSE(QOption option) {
         super(option);
@@ -21,9 +21,9 @@ public class QSelectPPSE extends QCore implements ProcessAble {
 
     public int process() {
 
-        int iRet = QCORE_SUCESS;
-        EMVTlv tlv = null , tlv_61 = null;
-        TLVTag tag = null , tag_61 = null;
+        int iRet;
+        EMVTlv tlv, tlv_61;
+        TLVTag tag, tag_61 = null;
 
         LogUtil.i(TAG, "------------------ QSelectPPSE Start -------------------");
 
@@ -87,7 +87,7 @@ public class QSelectPPSE extends QCore implements ProcessAble {
             return QCORE_DECODE;
         }
 
-        //先取得第一个TAG61所在的位置
+        //Get the first TAG61 location first
         if ((tag = tlv.childTag("61")) == null || tag.value == null)
         {
             return QCORE_NO61;
@@ -97,7 +97,7 @@ public class QSelectPPSE extends QCore implements ProcessAble {
 
         while(true)
         {
-            //判断当前位置的TAG是不是TAG61，如果不是，表示没有TAG61了
+            //Determine if the TAG of the current location is TAG61. If not, it means there is no TAG61.
             if (tlv.next() == null || !tlv.next().tag.equals("61"))
             {
                 break;
@@ -109,12 +109,12 @@ public class QSelectPPSE extends QCore implements ProcessAble {
                 return QCORE_DECODE;
             }
 
-            //在TAG61下面查找TAG4F，如果没有找到，当前TAG61+上当前TAG61的子标签
-            //的个数，再+1就是下一个TAG61的位置，后续的TAG50,TAG87的查找一样处理
+            //Look for TAG4F under TAG61. If not found, the current TAG61+ sub-tab of the current TAG61
+            //The number of +1, the next TAG61 position, the subsequent TAG50, TAG87 lookup processing
             if ((tag = tlv_61.childTag("4F")) == null || tag.value == null)
             {
                 iRet = QCORE_NO4F;
-                //指向下一个TAG61
+                //Point to the next TAG61
                 tlv.hasNext();
                 continue;
             }
@@ -131,7 +131,7 @@ public class QSelectPPSE extends QCore implements ProcessAble {
             if ((tag = tlv_61.childTag("50")) == null || tag.value == null)
             {
                 iRet = QCORE_NO50;
-                //指向下一个TAG61
+                //Point to the next TAG61
                 tlv.hasNext();
                 continue;
             }
@@ -141,7 +141,7 @@ public class QSelectPPSE extends QCore implements ProcessAble {
             if ((tag = tlv_61.childTag("87")) == null || tag.value == null)
             {
                 iRet = QCORE_NO87;
-                //指向下一个TAG61
+                //Point to the next TAG61
                 tlv.hasNext();
                 continue;
             }
@@ -149,27 +149,27 @@ public class QSelectPPSE extends QCore implements ProcessAble {
             candidate._priority = tag.value[0];
             candidate._isSelected = false;
 
-            //指向下一个TAG61
+            //Point to the next TAG61
             tlv.hasNext();
 
             mCandidateList.add(candidate);
 
         }
 
-        LogUtil.i(TAG,"候选AID个数有[" + mCandidateList.size() + "]");
+        LogUtil.i(TAG,"The number of candidate AIDs is [" + mCandidateList.size() + "]");
         if(mCandidateList.size() == 0)
         {
             return QCORE_NOAID;
         }
 
-        //开始冒泡优先级排序
+        //Start bubble sorting
         for (int i = 0; i < mCandidateList.size() - 1; i++)
         {
             for (int j = i + 1 ; j < mCandidateList.size() ; j++)
             {
                 if ((mCandidateList.get(i)._priority & 0x0F) > (mCandidateList.get(j)._priority & 0x0F))
                 {
-                    // 互换 j >>  i
+                    // Interchange j >> i
                     candidate = mCandidateList.get(i);
                     mCandidateList.set(i,mCandidateList.get(j));
                     mCandidateList.set(j,candidate);

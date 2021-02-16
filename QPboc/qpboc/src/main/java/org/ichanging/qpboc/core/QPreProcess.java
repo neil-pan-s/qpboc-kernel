@@ -17,14 +17,14 @@ public class QPreProcess extends QCore implements ProcessAble{
 
     public int process()
     {
-        boolean bNeedOnlineKey = false; //是否需要联机应用密文
-        byte[] u9F66 = new byte[4];     //假定终端肯定不支持MSD、非接PBOC
+        boolean bNeedOnlineKey; //Do you need to apply ciphertext online?
+        byte[] u9F66 = new byte[4];     //Assume that the terminal does not support MSD or non-connected PBOC.
 
         LogUtil.i(TAG, "------------------ QPreProcess Start -------------------");
 
         mAmount = mOption._amount;
 
-        mBuf.setTransAmount(mAmount, 0);    //设置交易金额
+        mBuf.setTransAmount(mAmount, 0);    //Set transaction amount
 
         LogUtil.i(TAG, "max_qpboc_trans_limit = " + EMVParam.max_qpboc_trans_limit);
         LogUtil.i(TAG, "max_qpboc_offline_limit = " + EMVParam.max_qpboc_offline_limit);
@@ -46,7 +46,7 @@ public class QPreProcess extends QCore implements ProcessAble{
         {
             if (!mParam.capa_options(mParam.CAPA_Support_QPBOC_Status_Check))
             {
-                //终端不支持状态检查
+                //The terminal does not support status check.
                 if (mAmount == 0)
                 {
                     if (!mParam.IsSupportOnline())	//终端不支持联机

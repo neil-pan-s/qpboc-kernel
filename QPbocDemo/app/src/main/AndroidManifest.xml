@@ -8,8 +8,6 @@
         其他的tag 属性和I/O 操作都不支持
     要用API level 10 来实现对tag 的广泛的读写支持。
 -->
-    <uses-sdk android:minSdkVersion="10" />
-
     <uses-permission android:name="android.permission.NFC" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

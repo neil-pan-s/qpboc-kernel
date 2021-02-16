@@ -11,10 +11,10 @@ import java.util.Iterator;
  */
 public class EMVTlv implements Iterator<TLVTag> {
 
-    private static final String TAG = "EMVTlv";
-    private byte[] mTlv = null;
-    private int mOffset = 0;
-    private TLVTag mTag = null;
+    private static final String TAG = EMVTlv.class.getSimpleName();
+    private byte[] mTlv;
+    private int mOffset;
+    private TLVTag mTag;
 
     public EMVTlv(byte[] tlv)
     {
@@ -49,10 +49,10 @@ public class EMVTlv implements Iterator<TLVTag> {
      */
     public static boolean validTlv(byte[] tlv)
     {
-        String  tag = null;
-        int     iLen = 0 , iOffset = 0;
-        byte[]  value = null;
-        boolean isConstructed = false;
+        String  tag;
+        int     iLen, iOffset;
+        byte[]  value;
+        boolean isConstructed;
 
         for (iOffset = 0;iOffset < tlv.length;)
         {
@@ -175,8 +175,8 @@ public class EMVTlv implements Iterator<TLVTag> {
     @Override
     public boolean hasNext()
     {
-        String  tag = null;
-        int     iLen = 0;
+        String  tag;
+        int     iLen;
         byte[]  value = null;
         boolean isConstructed = false;
 
@@ -324,7 +324,7 @@ public class EMVTlv implements Iterator<TLVTag> {
      */
     public byte[] childTagValue(String tag)
     {
-        TLVTag tlvTag = null;
+        TLVTag tlvTag;
 
         mOffset = 0;
 

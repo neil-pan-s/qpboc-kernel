@@ -17,10 +17,10 @@ public class EMVParam {
      *  QCore Param
      */
 
-    // 终端支持的应用AID中支持的最大的非接触读写器脱机最低限额
+    // The largest contactless reader offline minimum supported in the application AID supported by the terminal
     public static int max_qpboc_offline_limit = 0;
 
-    // 终端支持的应用AID中支持的最大的非接触读写器交易限额
+    // Maximum contactless reader transaction limit supported in the application AID supported by the terminal
     public static int max_qpboc_trans_limit = 0;
 
     // 终端支持的应用AID中支持的读写器持卡人验证方法（CVM）所需限额
@@ -99,11 +99,11 @@ public class EMVParam {
      *  EMV Kernel Config Param
      */
 
-    public static final String _conf_name       = "kernel.app";     //内核文件
+    public static final String _conf_name       = "kernel.app";     //Kernel file
     public static final String _capk_name       = "capk.app";       //公钥文件
     public static final String _capk_ecc_name   = "capk_sm.app";    //国密算法公钥文件
     public static final String _cert_blk        = "certblk.app";    //公钥回收文件
-    public static final String _emv_log         = "emv.log";        //PBOC内核交易记录，主要用于频度检查等
+    public static final String _emv_log         = "emv.log";        //PBOC kernel transaction record, mainly used for frequency check, etc.
 
     public static final int max_ddol_len = 252;
     public static final int max_tdol_len = 252;
@@ -122,7 +122,7 @@ public class EMVParam {
     public static final int TRANS_Support_Load                = (0x0001);
 
     public static int trans_opt_get(int nr , int[] _support) {
-        return ((_support)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_support)[nr >> 8] & (nr & 0x00FF));
     }
 
 
@@ -152,15 +152,15 @@ public class EMVParam {
     public static final int CAPA_Support_English              = (0x0102);
 
     public static int capa_opt_get(int nr, byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] & (nr & 0x00FF));
     }
 
     public static int capa_opt_set(int nr, byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int capa_opt_unset(int nr,byte[] _capa) {
-        return ((_capa)[((int) (nr)) >> 8] &= ~(((int) (nr)) & 0x00FF));
+        return ((_capa)[nr >> 8] &= ~(nr & 0x00FF));
     }
 
     /*
@@ -315,15 +315,15 @@ public class EMVParam {
 
 
     public static int  ics_opt_get(int nr, byte[] _ics) {
-        return ((_ics)[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] & (nr & 0x00FF));
     }
 
     public static int  ics_opt_set(int nr,byte[] _ics) {
-        return ((_ics)[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int  ics_opt_unset(int nr,byte[] _ics){
-        return ((_ics)[((int) (nr)) >> 8] &= ~(((int) (nr)) & 0x00FF));
+        return ((_ics)[nr >> 8] &= ~(nr & 0x00FF));
     }
 
 
@@ -679,11 +679,11 @@ public class EMVParam {
     public static final int SCRIPT_PROCESSING_FAILED_AFTER_2GENAC       = 0x0410;
 
     public static int tvr_set(int nr , byte[] _tvr) {
-        return (_tvr[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF));
+        return (_tvr[nr >> 8] |= (nr & 0x00FF));
     }
 
     public static int tvr_get(int nr, byte[] _tvr) {
-        return (_tvr[((int)(nr)) >> 8] & (((int)(nr)) & 0x00FF));
+        return (_tvr[nr >> 8] & (nr & 0x00FF));
     }
 
 
@@ -707,17 +707,17 @@ public class EMVParam {
     public static final int SCRIPT_PROCESSING_PERFORMED                = 0x0004;
 
     public static int tsi_set(int nr , byte[] _tsi) {
-        return _tsi[((int) (nr)) >> 8] |= (((int) (nr)) & 0x00FF);
+        return _tsi[nr >> 8] |= (nr & 0x00FF);
     }
 
     public static int tsi_get(int nr , byte[] _tsi) {
-        return (_tsi[((int) (nr)) >> 8] & (((int) (nr)) & 0x00FF));
+        return (_tsi[nr >> 8] & (nr & 0x00FF));
     }
 
-    public ArrayList<EMVAid> mAidList = new ArrayList<EMVAid>();
-    public ArrayList<EMVCapk> mCapkList = new ArrayList<EMVCapk>();
-    public ArrayList<EMVCandidate> mCandidateList = new ArrayList<EMVCandidate>();
-    public String mDataPath = null;     //文件读写路径
+    public ArrayList<EMVAid> mAidList = new ArrayList<>();
+    public ArrayList<EMVCapk> mCapkList = new ArrayList<>();
+    public ArrayList<EMVCandidate> mCandidateList = new ArrayList<>();
+    public String mDataPath = null;     //File read and write path
 
     private static EMVParam mEmvParam = null;
 
@@ -743,7 +743,7 @@ public class EMVParam {
 
         byte[] countryCode = { 0x01 , 0x56 };
         byte[] tdol = { (byte)0x9f, 0x08 , 0x02 };
-        byte[] capa = { (byte)0x90, 0x04 , 0x00, 0x00 }; // 支持QPboc , 支持强制联机
+        byte[] capa = { (byte)0x90, 0x04 , 0x00, 0x00 }; // Support QPboc, support forced online
         byte[] ics = { (byte)0xf4 , (byte)0xf0 , (byte)0xf0 , (byte)0xf8 , (byte)0xaf , (byte)0xfe , (byte)0xa0 };
         byte[] cap = { (byte)0xe0 , (byte)0xe9 , (byte)0xc8 };
         byte[] add_cap = { (byte)0xff ,  (byte)0x80 , (byte)0xf0 , (byte)0xa0 , (byte)0x01 };
@@ -761,13 +761,13 @@ public class EMVParam {
         this._ifd_serial_num        = sn.getBytes(); 	  		                    // 9F1E(Terminal), an8, 8 bytes ，接口设备（IFD）序列号
         this._terminal_id           = tid.getBytes();		  	                	// 9F1C(Terminal), an8, 8 bytes ，终端标识
         this._default_tdol          = tdol;                                         // 缺省交易证书数据对象列表（TDOL）
-        this._terminal_capa         = capa;                                         // 应用定义的终端能力
+        this._terminal_capa         = capa;                                         // Application defined terminal capabilities
 
 
         this._ics       = ics;
-        this._type      = 0x22;                                     // 9F35(Terminal), n2, 1 ,终端类型
-        this._cap       = cap;                                      // 9F33(Terminal), b,  3 ，终端能力
-        this._add_cap   = add_cap;                                  // 9F40(Terminal), b,  5 ，终端附加能力
+        this._type      = 0x22;                                     // 9F35(Terminal), n2, 1 ,terminal type
+        this._cap       = cap;                                      // 9F33(Terminal), b,  3 ，Terminal capability
+        this._add_cap   = add_cap;                                  // 9F40(Terminal), b,  5 ，Terminal add-on capability
 
     }
 
@@ -809,7 +809,7 @@ public class EMVParam {
         //Buffer Param
         this._tvr = new byte[5];
         this._tsi = new byte[2];
-        this._pboclog = new byte[2];      //交易日志入口
+        this._pboclog = new byte[2];      //Transaction log entry
         this._loadlog = new byte[2];      //圈存日志入口
     }
 
@@ -844,8 +844,8 @@ public class EMVParam {
 
     public void loadAids()
     {
-        int limit = 0,translimit = 0,cvmlimit = 0;
-        EMVAid aid = null;
+        int limit,translimit = 0,cvmlimit = 0;
+        EMVAid aid;
 
         mAidList.clear();
         max_qpboc_offline_limit = 0;
@@ -871,8 +871,8 @@ public class EMVParam {
                     mAidList.add(aid);
                     LogUtil.i(TAG,"Load Aid - " + aid);
 
-                    //获取最大的3个QPBOC交易限额:
-                    //非接触读写器脱机最低限额
+                    //Get the maximum 3 QPBOC transaction limits:
+                    //Contactless reader offline minimum
                     limit = Integer.parseInt(HexUtil.ByteArrayToHexString(aid._qpboc_offline_limit));
                     LogUtil.i(TAG,"_qpboc_offline_limit = " + limit);
                     if(max_qpboc_offline_limit < limit)
@@ -880,7 +880,7 @@ public class EMVParam {
                         max_qpboc_offline_limit = limit;
                     }
 
-                    //非接触读写器交易限额
+                    //Contactless reader transaction limit
                     limit = Integer.parseInt(HexUtil.ByteArrayToHexString(aid._qpboc_trans_limit));
                     LogUtil.i(TAG,"_qpboc_trans_limit = " + limit);
                     if(max_qpboc_trans_limit < limit)
@@ -888,7 +888,7 @@ public class EMVParam {
                         max_qpboc_trans_limit = limit;
                     }
 
-                    //读写器持卡人验证方法（CVM）所需限额
+                    //Reader cardholder verification method (CVM) required limit
                     limit = Integer.parseInt(HexUtil.ByteArrayToHexString(aid._qpboc_cvm_limit));
                     LogUtil.i(TAG,"_qpboc_cvm_limit = " + limit);
                     if(max_qpboc_cvm_limit < limit)

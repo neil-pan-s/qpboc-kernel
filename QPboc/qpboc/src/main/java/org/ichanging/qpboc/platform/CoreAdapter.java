@@ -1,18 +1,15 @@
 package org.ichanging.qpboc.platform;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.View;
+import androidx.appcompat.app.AlertDialog;
 import android.widget.Toast;
 
-import org.ichanging.qpboc.R;
 import org.ichanging.qpboc.callback.BooleanCallback;
 import org.ichanging.qpboc.callback.ByteArrayCallback;
 import org.ichanging.qpboc.callback.IntegerCallback;
-import org.ichanging.qpboc.callback.UICallback;
-import org.ichanging.qpboc.core.EMVCandidate;
 import org.ichanging.qpboc.core.CoreInterface;
+import org.ichanging.qpboc.core.EMVCandidate;
 import org.ichanging.qpboc.core.TransType;
 
 import java.util.ArrayList;
@@ -23,9 +20,9 @@ import java.util.Random;
  */
 public class CoreAdapter implements CoreInterface {
 
-    private Context mContext    = null;
-    private Toast   mToast      = null;
-    private Random  mRandom     = null;
+    private Context mContext;
+    private Toast   mToast;
+    private Random  mRandom;
     private int     mTraceNumber = 0;
 
     public CoreAdapter(Context context)
@@ -65,26 +62,11 @@ public class CoreAdapter implements CoreInterface {
                 .setMessage(msg)
                 .setCancelable(false);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                _callback.onSuccess(true);
-            }
-        });
+        builder.setPositiveButton("Yes", (dialogInterface, i) -> _callback.onSuccess(true));
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                _callback.onSuccess(false);
-            }
-        });
+        builder.setNegativeButton("No", (dialogInterface, i) -> _callback.onSuccess(false));
 
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialogInterface) {
-                _callback.onCancel();
-            }
-        });
+        builder.setOnCancelListener(dialogInterface -> _callback.onCancel());
 
         builder.create().show();
     }
